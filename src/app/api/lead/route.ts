@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY
+  ? new Resend(process.env.RESEND_API_KEY)
+  : null;
 const TO_EMAIL = process.env.LEAD_EMAIL ?? "trade@caterchoice.co.uk";
 
 export async function POST(req: Request) {
@@ -17,6 +19,11 @@ export async function POST(req: Request) {
       // Dev mode — log and return success
       console.log("📧 Lead received (no RESEND_API_KEY set):", body);
       return NextResponse.json({ success: true });
+    }
+
+    if (!resend) {
+      console.error("📧 Lead form error: RESEND_API_KEY is not set");
+      return NextResponse.json({ error: "Failed to send" }, { status: 500 });
     }
 
     await resend.emails.send({
