@@ -48,7 +48,7 @@ export function ProblemSolution() {
             className="space-y-4"
           >
             <div className="text-center mb-8">
-              <span className="inline-block bg-red-50 text-red-600 font-semibold px-5 py-2 rounded-full text-sm border border-red-100">
+              <span className="inline-block bg-orange-50 text-orange-600 font-semibold px-5 py-2 rounded-full text-sm border border-orange-100">
                 The Old Way — Frustrating
               </span>
             </div>
@@ -56,9 +56,9 @@ export function ProblemSolution() {
               <motion.div
                 key={problem.title}
                 variants={fadeUp}
-                className="flex gap-4 p-5 rounded-2xl bg-red-50/60 border border-red-100 hover:bg-red-50 transition-colors"
+                className="flex gap-4 p-5 rounded-2xl bg-orange-50/60 border border-orange-100 hover:bg-orange-50 transition-colors"
               >
-                <XCircle className="h-6 w-6 text-red-400 shrink-0 mt-0.5" />
+                <XCircle className="h-6 w-6 text-orange-400 shrink-0 mt-0.5" />
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-1">{problem.title}</h3>
                   <p className="text-sm text-gray-600 leading-relaxed">{problem.description}</p>

@@ -17,7 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { COMPANY, WHATSAPP_URL, BUSINESS_TYPES, MONTHLY_SPEND_OPTIONS } from "@/lib/constants";
+import { COMPANY, WHATSAPP_URL, BUSINESS_TYPES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 const schema = z.object({
@@ -26,7 +26,7 @@ const schema = z.object({
   phone: z.string().min(7, "Please enter a valid phone number"),
   businessName: z.string().min(2, "Please enter your business name"),
   businessType: z.string().min(1, "Please select your business type"),
-  monthlySpend: z.string().min(1, "Please select your monthly spend"),
+  productsNeeded: z.string().min(3, "Please tell us what products you need"),
   message: z.string().optional(),
 });
 
@@ -208,20 +208,16 @@ export function LeadForm() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-gray-700 font-medium">
-                      Monthly Catering Spend <span className="text-red-400">*</span>
+                    <Label htmlFor="productsNeeded" className="text-gray-700 font-medium">
+                      Products Needed <span className="text-red-400">*</span>
                     </Label>
-                    <Select onValueChange={(val) => { if (val) setValue("monthlySpend", String(val)); }}>
-                      <SelectTrigger className={cn("h-12 rounded-xl border-gray-200", errors.monthlySpend && "border-red-300")}>
-                        <SelectValue placeholder="Select monthly spend" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {MONTHLY_SPEND_OPTIONS.map((opt) => (
-                          <SelectItem key={opt} value={opt}>{opt}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    {errors.monthlySpend && <p className="text-red-500 text-xs">{errors.monthlySpend.message}</p>}
+                    <Textarea
+                      id="productsNeeded"
+                      placeholder="e.g. Frozen chicken, cooking oil, packaging, sauces..."
+                      className={cn("rounded-xl border-gray-200 resize-none min-h-[80px]", errors.productsNeeded && "border-red-300")}
+                      {...register("productsNeeded")}
+                    />
+                    {errors.productsNeeded && <p className="text-red-500 text-xs">{errors.productsNeeded.message}</p>}
                   </div>
                 </div>
 
@@ -251,7 +247,7 @@ export function LeadForm() {
                   ) : (
                     <>
                       <Send className="mr-2 h-5 w-5" />
-                      Get My Free Trade Quote
+                      Get Wholesale Pricing Today
                     </>
                   )}
                 </Button>

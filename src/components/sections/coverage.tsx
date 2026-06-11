@@ -42,17 +42,14 @@ export function Coverage() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            {/* UK map placeholder */}
-            <div className="aspect-[3/4] bg-gradient-to-br from-green-50 to-green-100 rounded-3xl border-2 border-green-100 flex items-center justify-center relative overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                <MapPin className="w-64 h-64 text-green-600" />
-              </div>
-              <div className="relative text-center p-8 z-10">
-                <div className="text-5xl mb-4">🗺️</div>
-                <p className="text-green-800 font-semibold text-lg">UK Coverage Map</p>
-                <p className="text-green-600 text-sm mt-2">Replace with actual UK map image</p>
-                <p className="text-green-500 text-xs mt-1">Path: /public/images/uk-map.webp</p>
-              </div>
+            <div className="aspect-[3/4] rounded-3xl overflow-hidden border-2 border-green-100 shadow-lg relative">
+              <img
+                src="/uk-map.jpg"
+                alt="UK delivery coverage map"
+                className="w-full h-full object-cover object-center"
+              />
+              {/* Hue overlay — turns red dots green, leaves gray map unchanged */}
+              <div className="absolute inset-0 bg-green-500 mix-blend-hue pointer-events-none" />
               {/* Pin markers */}
               {[
                 { top: "20%", left: "45%", city: "Edinburgh" },
@@ -61,15 +58,21 @@ export function Coverage() {
                 { top: "60%", left: "55%", city: "London" },
                 { top: "50%", left: "20%", city: "Cardiff" },
               ].map((pin) => (
-                <motion.div
+                <div
                   key={pin.city}
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: Math.random() * 2 }}
-                  className="absolute"
+                  className="absolute group/pin cursor-pointer"
                   style={{ top: pin.top, left: pin.left }}
                 >
-                  <div className="w-3 h-3 bg-green-500 rounded-full border-2 border-white shadow-md" />
-                </motion.div>
+                  {/* Tooltip */}
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 bg-gray-900 text-white text-xs font-semibold rounded-lg whitespace-nowrap opacity-0 group-hover/pin:opacity-100 transition-opacity duration-200 pointer-events-none">
+                    {pin.city}
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900" />
+                  </div>
+                  {/* Pulse ring */}
+                  <span className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-50 scale-150" />
+                  {/* Dot */}
+                  <div className="relative w-3 h-3 bg-green-500 group-hover/pin:bg-green-400 group-hover/pin:scale-150 rounded-full border-2 border-white shadow-md transition-transform duration-200" />
+                </div>
               ))}
             </div>
           </motion.div>

@@ -2,20 +2,22 @@
 
 import { motion } from "framer-motion";
 import {
-  Package, Sparkles, ChefHat, Wheat, Coffee,
-  Scroll, Shield, Thermometer
+  Package, Sparkles, Wheat, Coffee,
+  Snowflake, FlaskConical, Sandwich, Droplets, Milk, Pizza
 } from "lucide-react";
 import { categories } from "@/data/content";
 
 const iconMap: Record<string, React.ElementType> = {
+  snowflake: Snowflake,
+  flask: FlaskConical,
+  sandwich: Sandwich,
   package: Package,
-  sparkles: Sparkles,
-  "chef-hat": ChefHat,
+  droplets: Droplets,
   wheat: Wheat,
   coffee: Coffee,
-  scroll: Scroll,
-  shield: Shield,
-  thermometer: Thermometer,
+  sparkles: Sparkles,
+  milk: Milk,
+  pizza: Pizza,
 };
 
 export function Categories() {
@@ -40,7 +42,7 @@ export function Categories() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
           {categories.map((cat, i) => {
             const Icon = iconMap[cat.icon] ?? Package;
             return (

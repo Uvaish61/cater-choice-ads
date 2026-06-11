@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight, MessageCircle, Phone } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { finalCtaContent } from "@/data/content";
 import { COMPANY, WHATSAPP_URL } from "@/lib/constants";
@@ -48,15 +48,17 @@ export function FinalCta() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="bg-white text-green-700 hover:bg-green-50 font-bold px-10 py-6 text-base shadow-xl group/btn cursor-pointer"
-              onClick={() => document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth" })}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
+            <a
+              href={`tel:${COMPANY.phone}`}
+              className={cn(
+                buttonVariants({ size: "lg" }),
+                "bg-white text-green-700 hover:bg-green-50 font-bold px-10 py-6 text-base shadow-xl"
+              )}
             >
+              <Phone className="mr-2 h-5 w-5" />
               {finalCtaContent.primaryCta}
-              <ArrowRight className="ml-2 h-5 w-5 group-hover/btn:translate-x-1 transition-transform" />
-            </Button>
+            </a>
             <a
               href={WHATSAPP_URL}
               target="_blank"
@@ -69,6 +71,13 @@ export function FinalCta() {
               <MessageCircle className="mr-2 h-5 w-5" />
               {finalCtaContent.secondaryCta}
             </a>
+            <Button
+              size="lg"
+              className="bg-green-800 hover:bg-green-900 text-white font-bold px-10 py-6 text-base shadow-xl cursor-pointer border border-white/20"
+              onClick={() => document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth" })}
+            >
+              {finalCtaContent.tertiaryCta}
+            </Button>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-green-200 text-sm">

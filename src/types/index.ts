@@ -4,7 +4,7 @@ export interface LeadFormData {
   phone: string;
   businessName: string;
   businessType: string;
-  monthlySpend: string;
+  productsNeeded: string;
   message?: string;
 }
 

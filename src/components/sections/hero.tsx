@@ -2,14 +2,14 @@
 
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { CheckCircle, Truck, Tag, UserCheck, Phone, Download, ArrowRight } from "lucide-react";
+import { CheckCircle, Truck, Tag, UserCheck, Phone, Download, ArrowRight, Award, ChefHat, MessageCircle } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { heroContent } from "@/data/content";
 import { COMPANY, WHATSAPP_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
-const iconMap = { check: CheckCircle, truck: Truck, tag: Tag, user: UserCheck };
+const iconMap = { check: CheckCircle, truck: Truck, tag: Tag, user: UserCheck, award: Award, chef: ChefHat };
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -22,7 +22,7 @@ const fadeUp: Variants = {
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] gradient-hero flex items-center overflow-hidden">
+    <section className="relative min-h-[90vh] bg-white flex items-center overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-green-100/60 blur-3xl" />
@@ -49,22 +49,36 @@ export function Hero() {
           </motion.div>
 
           {/* CTA buttons */}
-          <motion.div custom={2} variants={fadeUp} initial="hidden" animate="visible" className="flex flex-col sm:flex-row gap-3">
-            <Button
-              size="lg"
-              className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-6 text-base shadow-lg shadow-green-200 group cursor-pointer"
-              onClick={() => document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth" })}
-            >
-              <Phone className="mr-2 h-5 w-5" />
-              {heroContent.primaryCta}
-              <ArrowRight className="ml-2 h-4 w-4 group-hover/button:translate-x-1 transition-transform" />
-            </Button>
+          <motion.div custom={2} variants={fadeUp} initial="hidden" animate="visible" className="flex flex-col gap-3">
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button
+                size="lg"
+                className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-6 text-base shadow-lg shadow-green-200 group cursor-pointer"
+                onClick={() => document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth" })}
+              >
+                <Phone className="mr-2 h-5 w-5" />
+                {heroContent.primaryCta}
+                <ArrowRight className="ml-2 h-4 w-4 group-hover/button:translate-x-1 transition-transform" />
+              </Button>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  buttonVariants({ size: "lg" }),
+                  "bg-[#25D366] hover:bg-[#20BD5C] text-white font-semibold px-8 py-6 text-base shadow-lg"
+                )}
+              >
+                <MessageCircle className="mr-2 h-5 w-5" />
+                {heroContent.whatsappCta}
+              </a>
+            </div>
             <a
               href={COMPANY.catalogUrl}
               download
               className={cn(
                 buttonVariants({ variant: "outline", size: "lg" }),
-                "border-green-300 text-green-700 hover:bg-green-50 font-semibold px-8 py-6 text-base"
+                "border-green-300 text-green-700 hover:bg-green-50 font-semibold px-8 py-6 text-base w-fit"
               )}
             >
               <Download className="mr-2 h-5 w-5" />
@@ -74,7 +88,7 @@ export function Hero() {
 
           {/* Trust badges */}
           <motion.div custom={3} variants={fadeUp} initial="hidden" animate="visible">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
               {heroContent.trustBadges.map((badge) => {
                 const Icon = iconMap[badge.icon as keyof typeof iconMap] ?? CheckCircle;
                 return (
@@ -114,13 +128,13 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 }}
           className="relative hidden lg:block"
         >
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/50">
-            <div className="aspect-[4/3] bg-gradient-to-br from-green-800 to-green-600 flex items-center justify-center">
-              <div className="text-center text-white/80 space-y-3 p-8">
-                <div className="text-6xl font-bold text-white">🏭</div>
-                <p className="text-xl font-semibold text-white">Cater Choice Warehouse</p>
-                <p className="text-sm opacity-60">Replace with: /public/images/warehouse.webp</p>
-              </div>
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+            <div className="aspect-[4/3]">
+              <img
+                src="/warehouse.jpg"
+                alt="Cater Choice wholesale catering supplies"
+                className="w-full h-[125%] object-cover object-bottom -mt-[25%]"
+              />
             </div>
 
             <motion.div

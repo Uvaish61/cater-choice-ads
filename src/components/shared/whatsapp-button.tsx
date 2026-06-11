@@ -32,16 +32,26 @@ export function WhatsAppButton() {
               </button>
             </div>
             <p className="text-gray-600 text-xs leading-relaxed mb-3">
-              Hi! Chat with us on WhatsApp for instant quotes and product questions.
+              Get an instant quote or request our full product list right now.
             </p>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full text-center bg-[#25D366] hover:bg-[#20BD5C] text-white font-semibold text-xs py-2 px-4 rounded-xl transition-colors"
-            >
-              Start Chat →
-            </a>
+            <div className="flex flex-col gap-2">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center bg-[#25D366] hover:bg-[#20BD5C] text-white font-semibold text-xs py-2 px-4 rounded-xl transition-colors"
+              >
+                Get Instant Quote
+              </a>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold text-xs py-2 px-4 rounded-xl transition-colors"
+              >
+                Request Product List
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

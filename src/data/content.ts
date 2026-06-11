@@ -2,17 +2,19 @@ import type { Testimonial, ProductCategory, Stat, Feature, CoverageRegion } from
 
 export const heroContent = {
   badge: "Trusted by 5,000+ UK Catering Businesses",
-  headline: "Wholesale Catering Supplies",
-  headlineAccent: "Delivered Next Day",
+  headline: "UK's Trusted Catering &",
+  headlineAccent: "Food Supply Partner",
   subheadline:
-    "Trade prices on 10,000+ products. No minimum order. Dedicated account manager. UK-wide delivery.",
-  primaryCta: "Get a Free Trade Quote",
-  secondaryCta: "Download Product Catalog",
+    "Bulk food supplies, frozen products, packaging, sauces, bakery items & restaurant essentials delivered fast across the UK.",
+  primaryCta: "Get Wholesale Prices",
+  secondaryCta: "Request Product Catalog",
+  whatsappCta: "WhatsApp Us",
   trustBadges: [
-    { label: "No Minimum Order", icon: "check" },
-    { label: "Next Day Delivery", icon: "truck" },
-    { label: "Trade Prices", icon: "tag" },
-    { label: "Dedicated Account Manager", icon: "user" },
+    { label: "Fast Delivery", icon: "truck" },
+    { label: "Bulk Pricing", icon: "tag" },
+    { label: "Best Quality", icon: "award" },
+    { label: "Restaurant Supplier", icon: "chef" },
+    { label: "1000+ Products", icon: "check" },
   ],
 };
 
@@ -44,31 +46,43 @@ export const problemSolutionContent = {
         "Having to deal with 5+ suppliers to get everything you need for your kitchen.",
     },
   ],
-  solutionHeadline: "Cater Choice Solves All of This",
+  solutionHeadline: "Why Restaurants Choose Cater Choice",
   solutions: [
     {
       icon: "check-circle",
-      title: "Reliable Stock, Always",
+      title: "Competitive Wholesale Pricing",
       description:
-        "10,000+ products in stock. Real-time inventory. Proactive communication if anything changes.",
+        "Volume discounts from day one. The more you buy, the more you save. Transparent, honest pricing every time.",
     },
     {
       icon: "check-circle",
-      title: "Genuine Trade Prices",
+      title: "Huge Range of Catering Products",
       description:
-        "Volume discounts from day one. The more you buy, the more you save. Transparent pricing.",
+        "10,000+ products — from frozen chicken to packaging, sauces to bakery items. Everything in one place.",
     },
     {
       icon: "check-circle",
-      title: "No Minimum Order",
+      title: "Fast UK-Wide Delivery",
       description:
-        "Order exactly what you need, when you need it. No forced bulk buying, no wasted stock.",
+        "Order before 2pm for next day delivery across mainland UK. Tracked and reliable, every time.",
     },
     {
       icon: "check-circle",
-      title: "Everything Under One Roof",
+      title: "Consistent Stock Availability",
       description:
-        "From disposables to equipment, cleaning to dry goods — one supplier, one invoice.",
+        "Real-time inventory management means no nasty surprises. If stock is low, we tell you in advance.",
+    },
+    {
+      icon: "check-circle",
+      title: "Trusted by Restaurants & Food Businesses",
+      description:
+        "5,000+ UK catering businesses rely on us. From independent restaurants to hotel chains.",
+    },
+    {
+      icon: "check-circle",
+      title: "One-Stop Supply Solution",
+      description:
+        "One supplier, one account manager, one invoice. Stop juggling 5 different reps every week.",
     },
   ],
 };
@@ -76,67 +90,83 @@ export const problemSolutionContent = {
 export const categories: ProductCategory[] = [
   {
     id: 1,
-    name: "Disposables & Packaging",
-    description: "Cups, containers, cutlery, bags, and packaging solutions",
+    name: "Frozen Chicken",
+    description: "Whole birds, portions, fillets, wings and marinated chicken products",
+    icon: "snowflake",
+    itemCount: "200+",
+    color: "bg-blue-50 border-blue-200",
+  },
+  {
+    id: 2,
+    name: "Sauces & Condiments",
+    description: "Ketchup, mayo, hot sauce, marinades, dressings and cooking sauces",
+    icon: "flask",
+    itemCount: "400+",
+    color: "bg-green-50 border-green-200",
+  },
+  {
+    id: 3,
+    name: "Burger Supplies",
+    description: "Patties, buns, cheese slices, lettuce, gherkins and burger boxes",
+    icon: "sandwich",
+    itemCount: "150+",
+    color: "bg-amber-50 border-amber-200",
+  },
+  {
+    id: 4,
+    name: "Packaging",
+    description: "Cups, containers, takeaway boxes, bags and food-safe packaging",
     icon: "package",
     itemCount: "2,500+",
     color: "bg-green-50 border-green-200",
   },
   {
-    id: 2,
+    id: 5,
+    name: "Oils",
+    description: "Vegetable, sunflower, rapeseed, olive and frying oils in bulk",
+    icon: "droplets",
+    itemCount: "80+",
+    color: "bg-yellow-50 border-yellow-200",
+  },
+  {
+    id: 6,
+    name: "Bakery Products",
+    description: "Flour, bread, rolls, pastries, cakes and bakery ingredients",
+    icon: "wheat",
+    itemCount: "350+",
+    color: "bg-orange-50 border-orange-200",
+  },
+  {
+    id: 7,
+    name: "Beverages",
+    description: "Coffee, tea, soft drinks, juices, syrups and hot chocolate",
+    icon: "coffee",
+    itemCount: "600+",
+    color: "bg-cyan-50 border-cyan-200",
+  },
+  {
+    id: 8,
     name: "Cleaning & Hygiene",
     description: "Detergents, sanitisers, mops, cloths and janitorial supplies",
     icon: "sparkles",
     itemCount: "1,200+",
-    color: "bg-blue-50 border-blue-200",
-  },
-  {
-    id: 3,
-    name: "Kitchen Equipment",
-    description: "Small appliances, utensils, cookware and food prep tools",
-    icon: "chef-hat",
-    itemCount: "800+",
-    color: "bg-orange-50 border-orange-200",
-  },
-  {
-    id: 4,
-    name: "Dry & Ambient Goods",
-    description: "Flour, sugar, oils, condiments, spices and pantry essentials",
-    icon: "wheat",
-    itemCount: "1,800+",
-    color: "bg-yellow-50 border-yellow-200",
-  },
-  {
-    id: 5,
-    name: "Beverages",
-    description: "Coffee, tea, soft drinks, juices and hot chocolate",
-    icon: "coffee",
-    itemCount: "600+",
-    color: "bg-amber-50 border-amber-200",
-  },
-  {
-    id: 6,
-    name: "Paper & Catering Consumables",
-    description: "Napkins, greaseproof, foil, cling film and roll products",
-    icon: "scroll",
-    itemCount: "400+",
     color: "bg-purple-50 border-purple-200",
   },
   {
-    id: 7,
-    name: "PPE & Safety",
-    description: "Gloves, aprons, hairnets, face masks and safety equipment",
-    icon: "shield",
+    id: 9,
+    name: "Dairy & Cheese",
+    description: "Butter, milk, cream, cheddar, mozzarella and dairy essentials",
+    icon: "milk",
     itemCount: "300+",
-    color: "bg-red-50 border-red-200",
+    color: "bg-lime-50 border-lime-200",
   },
   {
-    id: 8,
-    name: "Chilled & Frozen",
-    description: "Dairy, meats, ready-to-cook and frozen convenience products",
-    icon: "thermometer",
-    itemCount: "1,400+",
-    color: "bg-cyan-50 border-cyan-200",
+    id: 10,
+    name: "Pizza Supplies",
+    description: "Pizza bases, mozzarella, tomato sauce, toppings and pizza boxes",
+    icon: "pizza",
+    itemCount: "200+",
+    color: "bg-teal-50 border-teal-200",
   },
 ];
 
@@ -231,9 +261,10 @@ export const coverageRegions: CoverageRegion[] = [
 ];
 
 export const finalCtaContent = {
-  headline: "Ready to Cut Your Supply Costs?",
+  headline: "Ready to Source Better Catering Supplies?",
   subheadline:
-    "Join 5,000+ UK catering businesses already saving with Cater Choice. Get your free trade account today.",
-  primaryCta: "Get a Free Quote Now",
-  secondaryCta: "Chat on WhatsApp",
+    "Get competitive wholesale pricing for your restaurant, cafe, catering business, or cloud kitchen today.",
+  primaryCta: "Call Now",
+  secondaryCta: "WhatsApp Us",
+  tertiaryCta: "Request a Quote",
 };
