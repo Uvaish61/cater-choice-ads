@@ -9,13 +9,13 @@ import { categories } from "@/data/content";
 
 const iconMap: Record<string, React.ElementType> = {
   snowflake: Snowflake,
-  flask: FlaskConical,
+  flask: CookingPot,
   sandwich: Sandwich,
   package: Package,
   droplets: Droplets,
   wheat: Wheat,
   coffee: Coffee,
-  sparkles: Sparkles,
+  sparkles: SprayCan,
   milk: Milk,
   pizza: Pizza,
 };
