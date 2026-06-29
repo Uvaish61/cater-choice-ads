@@ -22,7 +22,7 @@ const iconMap: Record<string, React.ElementType> = {
 
 export function Categories() {
   return (
-    <section className="py-20 sm:py-28 bg-gray-50">
+    <section className="py-20 sm:py-28 bg-[#f4fdf7]">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -53,7 +53,7 @@ export function Categories() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.07 }}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className={`relative group p-5 rounded-2xl border-2 ${cat.color} bg-white cursor-pointer shadow-sm hover:shadow-md transition-shadow`}
+                className={`relative group p-5 rounded-2xl border-2 ${cat.color} bg-white cursor-pointer shadow-sm hover:shadow-xl hover:shadow-green-200/50 transition-all duration-300`}
               >
                 <div className="mb-4">
                   <div className="inline-flex p-3 rounded-xl bg-white shadow-sm border border-gray-100">

@@ -15,7 +15,7 @@ const iconMap: Record<string, React.ElementType> = {
 
 export function WhyUs() {
   return (
-    <section className="py-20 sm:py-28 bg-white">
+    <section className="py-20 sm:py-28 bg-[#f4fdf7]">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
