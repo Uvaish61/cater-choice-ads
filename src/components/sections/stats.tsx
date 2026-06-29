@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Package, Users, Award, Truck } from "lucide-react";
+import { Package, Users, Award, Truck, Star } from "lucide-react";
 import { stats } from "@/data/content";
 
 function useCountUp(target: number, duration = 2200, start = false) {
@@ -144,7 +144,11 @@ export function Stats() {
           transition={{ delay: 0.7, duration: 0.5 }}
           className="flex items-center justify-center gap-2 mt-12 text-green-200/60 text-sm"
         >
-          <span className="text-amber-300 tracking-tight text-base">★★★★★</span>
+          <span className="flex">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star key={i} className="h-4 w-4 text-amber-400 fill-amber-400" />
+            ))}
+          </span>
           <span>Rated 4.9/5 by verified trade customers</span>
         </motion.div>
       </div>

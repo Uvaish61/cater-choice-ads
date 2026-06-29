@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { CheckCircle, Send, Loader2, Phone, MessageCircle } from "lucide-react";
+import { CheckCircle, Send, Loader2, Phone, MessageCircle, ShieldCheck } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -253,7 +253,7 @@ export function LeadForm() {
                 </Button>
 
                 <p className="text-center text-xs text-gray-400">
-                  🔒 Your information is secure. We never share your data with third parties.
+                  <ShieldCheck className="h-3.5 w-3.5 shrink-0" /> Your information is secure. We never share your data with third parties.
                 </p>
               </form>
             </motion.div>
