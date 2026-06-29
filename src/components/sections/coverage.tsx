@@ -2,15 +2,15 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Truck, Clock, MapPin } from "lucide-react";
+import { Truck, Clock, MapPin, ClipboardList, PackageCheck, CheckCircle2 } from "lucide-react";
 import ukMapImg from "@/assets/images/uk-map.jpg";
 import { coverageRegions } from "@/data/content";
 
 const deliverySteps = [
-  { icon: "📋", title: "Place Your Order", desc: "Online or by phone, Mon–Fri" },
-  { icon: "📦", title: "Picked & Packed", desc: "Same day if ordered before 2pm" },
-  { icon: "🚚", title: "Dispatched", desc: "With tracked courier service" },
-  { icon: "✅", title: "Delivered", desc: "To your door, on time" },
+  { icon: ClipboardList, title: "Place Your Order", desc: "Online or by phone, Mon–Fri" },
+  { icon: PackageCheck, title: "Picked & Packed", desc: "Same day if ordered before 2pm" },
+  { icon: Truck, title: "Dispatched", desc: "With tracked courier service" },
+  { icon: CheckCircle2, title: "Delivered", desc: "To your door, on time" },
 ];
 
 export function Coverage() {
@@ -138,8 +138,8 @@ export function Coverage() {
                       transition={{ delay: i * 0.1 }}
                       className="flex items-center gap-4 relative"
                     >
-                      <div className="w-10 h-10 rounded-full bg-white border-2 border-green-200 flex items-center justify-center text-lg shrink-0 z-10 shadow-sm">
-                        {step.icon}
+                      <div className="w-10 h-10 rounded-full bg-white border-2 border-green-200 flex items-center justify-center shrink-0 z-10 shadow-sm">
+                        <step.icon className="h-5 w-5 text-green-600" />
                       </div>
                       <div>
                         <p className="font-semibold text-gray-900 text-sm">{step.title}</p>
