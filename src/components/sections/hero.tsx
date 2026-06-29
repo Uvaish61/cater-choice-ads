@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { Truck, BadgePercent, ShieldCheck, UtensilsCrossed, Package, BadgeDollarSign, Download, ArrowRight, MessageCircle, BookOpen } from "lucide-react";
+import { Truck, BadgePercent, ShieldCheck, UtensilsCrossed, Package, BadgeDollarSign, Download, ArrowRight, BookOpen } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { heroContent } from "@/data/content";
@@ -90,7 +90,7 @@ export function Hero() {
                 "border-2 border-green-400 text-green-700 hover:bg-green-600 hover:text-white hover:border-green-600 font-bold px-8 py-6 text-base w-fit transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
               )}
             >
-              <Download className="mr-2 h-5 w-5" />
+              <BookOpen className="mr-2 h-5 w-5" />
               {heroContent.secondaryCta}
             </a>
           </motion.div>
@@ -99,7 +99,7 @@ export function Hero() {
           <motion.div custom={3} variants={fadeUp} initial="hidden" animate="visible">
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
               {heroContent.trustBadges.map((badge) => {
-                const Icon = iconMap[badge.icon as keyof typeof iconMap] ?? CheckCircle;
+                const Icon = iconMap[badge.icon as keyof typeof iconMap] ?? Package;
                 return (
                   <div
                     key={badge.label}
