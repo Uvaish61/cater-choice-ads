@@ -46,14 +46,14 @@ export function WhyUs() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 whileHover={{ y: -4 }}
-                className="group p-7 rounded-2xl border border-gray-100 bg-white hover:border-green-200 hover:shadow-xl hover:shadow-green-200/40 transition-all duration-300"
+                className="group p-7 rounded-2xl border border-gray-100 border-t-[3px] border-t-green-600 bg-white hover:border-green-200 hover:shadow-xl hover:shadow-green-200/40 transition-all duration-300"
               >
                 <div className="mb-5">
                   <div className="inline-flex p-3.5 rounded-2xl bg-green-50 group-hover:bg-green-100 transition-colors">
                     <Icon className="h-6 w-6 text-green-600" />
                   </div>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{feature.description}</p>
               </motion.div>
             );

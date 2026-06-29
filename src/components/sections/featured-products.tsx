@@ -75,7 +75,7 @@ export function FeaturedProducts() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:shadow-green-100/50 hover:-translate-y-1 transition-all duration-300 group"
+              className="bg-white rounded-2xl overflow-hidden border border-gray-100 border-t-[3px] border-t-green-600 shadow-sm hover:shadow-xl hover:shadow-green-100/50 hover:-translate-y-1 transition-all duration-300 group"
             >
               {/* Image */}
               <div className="relative aspect-square overflow-hidden bg-gray-50">
@@ -97,7 +97,7 @@ export function FeaturedProducts() {
 
               {/* Content */}
               <div className="p-5">
-                <h3 className="font-bold text-gray-900 text-lg mb-1.5">{product.name}</h3>
+                <h3 className="font-bold text-gray-900 text-2xl mb-1.5">{product.name}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed mb-4">{product.description}</p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1.5 text-green-600 text-xs font-semibold">

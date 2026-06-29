@@ -37,7 +37,7 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative bg-white rounded-2xl p-7 shadow-sm border border-gray-100 hover:shadow-xl hover:shadow-green-100/40 hover:border-green-100 hover:-translate-y-1 transition-all duration-300"
+              className="relative bg-white rounded-2xl p-7 shadow-sm border border-gray-100 border-t-[3px] border-t-green-600 hover:shadow-xl hover:shadow-green-100/40 hover:border-green-100 hover:-translate-y-1 transition-all duration-300"
             >
               {/* Quote icon */}
               <Quote className="absolute top-6 right-6 h-8 w-8 text-green-100" />

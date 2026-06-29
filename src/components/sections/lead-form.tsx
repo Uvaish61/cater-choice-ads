@@ -87,7 +87,7 @@ export function LeadForm() {
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="text-center py-16 bg-white rounded-3xl border border-green-100 shadow-sm"
+              className="text-center py-16 bg-white rounded-3xl border border-green-100 border-t-[3px] border-t-green-600 shadow-sm"
             >
               <div className="inline-flex p-5 bg-green-50 rounded-full mb-6">
                 <CheckCircle className="h-12 w-12 text-green-500" />
@@ -129,7 +129,7 @@ export function LeadForm() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-white rounded-3xl border border-gray-100 shadow-sm p-8 sm:p-12"
+              className="bg-white rounded-3xl border border-gray-100 border-t-[3px] border-t-green-600 shadow-sm p-8 sm:p-12"
             >
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
