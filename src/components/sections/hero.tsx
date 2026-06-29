@@ -2,14 +2,13 @@
 
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import Image from "next/image";
 import { CheckCircle, Truck, Tag, UserCheck, Phone, Download, ArrowRight, Award, ChefHat, MessageCircle } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { heroContent } from "@/data/content";
 import { COMPANY, WHATSAPP_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import warehouseImg from "@/assets/images/warehouse.jpg";
+import { HeroForm } from "@/components/sections/hero-form";
 
 const iconMap = { check: CheckCircle, truck: Truck, tag: Tag, user: UserCheck, award: Award, chef: ChefHat };
 
@@ -123,46 +122,13 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Right — hero visual */}
+        {/* Right — lead capture form */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, x: 40 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 }}
-          className="relative hidden lg:block"
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 }}
         >
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-            <div className="aspect-[4/3] relative">
-              <Image
-                src={warehouseImg}
-                alt="Cater Choice wholesale catering supplies"
-                fill
-                className="object-cover object-bottom scale-[1.25] origin-bottom"
-                sizes="(max-width: 1024px) 0px, 50vw"
-                priority
-                placeholder="blur"
-              />
-            </div>
-
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-4 left-4 bg-white rounded-2xl p-3 shadow-xl border border-gray-100"
-            >
-              <p className="text-xs text-gray-500">In Stock</p>
-              <p className="text-2xl font-bold text-green-600">10,000+</p>
-              <p className="text-xs text-gray-500">Products</p>
-            </motion.div>
-
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute bottom-4 right-4 bg-white rounded-2xl p-3 shadow-xl border border-gray-100"
-            >
-              <p className="text-xs text-gray-500">Delivery</p>
-              <p className="text-2xl font-bold text-green-600">48hr</p>
-              <p className="text-xs text-gray-500">UK-wide</p>
-            </motion.div>
-          </div>
+          <HeroForm />
         </motion.div>
       </div>
 

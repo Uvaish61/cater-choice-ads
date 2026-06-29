@@ -21,14 +21,7 @@ export async function POST(req: Request) {
       message,
     } = body;
 
-    if (
-      !name ||
-      !email ||
-      !phone ||
-      !businessName ||
-      !businessType ||
-      !monthlySpend
-    ) {
+    if (!name || !phone || !businessType) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
@@ -64,11 +57,11 @@ export async function POST(req: Request) {
             <table style="width: 100%; border-collapse: collapse;">
               ${[
                 ["Name", name],
-                ["Email", email],
+                ["Email", email || "—"],
                 ["Phone", phone],
-                ["Business Name", businessName],
+                ["Business Name", businessName || "—"],
                 ["Business Type", businessType],
-                ["Monthly Spend", monthlySpend],
+                ["Monthly Spend", monthlySpend || "—"],
                 ["Message", message || "—"],
               ]
                 .map(
