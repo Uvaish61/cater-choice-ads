@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { CheckCircle, Truck, Tag, UserCheck, Phone, Download, ArrowRight, Award, ChefHat, MessageCircle } from "lucide-react";
+import { Truck, BadgePercent, ShieldCheck, UtensilsCrossed, Package, BadgeDollarSign, Download, ArrowRight, MessageCircle, BookOpen } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { heroContent } from "@/data/content";
@@ -10,7 +10,14 @@ import { COMPANY, WHATSAPP_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { HeroForm } from "@/components/sections/hero-form";
 
-const iconMap = { check: CheckCircle, truck: Truck, tag: Tag, user: UserCheck, award: Award, chef: ChefHat };
+const iconMap = {
+  truck: Truck,               // Fast Delivery
+  tag:   BadgePercent,        // Bulk Pricing
+  award: ShieldCheck,         // Best Quality
+  chef:  UtensilsCrossed,     // Restaurant Supplier
+  check: Package,             // 1000+ Products
+  user:  BadgeDollarSign,     // fallback
+};
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -58,7 +65,7 @@ export function Hero() {
                 className="group bg-green-600 hover:bg-green-700 active:bg-green-800 text-white font-bold px-8 py-6 text-base shadow-xl shadow-green-300/50 hover:shadow-green-400/50 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
                 onClick={() => document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth" })}
               >
-                <Phone className="mr-2 h-5 w-5" />
+                <BadgePercent className="mr-2 h-5 w-5" />
                 {heroContent.primaryCta}
                 <ArrowRight className="ml-2 h-4 w-4 translate-x-0 group-hover:translate-x-1 transition-transform duration-200" />
               </Button>
