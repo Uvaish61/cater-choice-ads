@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import {
-  Package, Sparkles, Wheat, Coffee,
-  Snowflake, FlaskConical, Sandwich, Droplets, Milk, Pizza
+  Package, SprayCan, Wheat, Coffee,
+  Snowflake, CookingPot, Sandwich, Droplets, Milk, Pizza
 } from "lucide-react";
 import { categories } from "@/data/content";
 
