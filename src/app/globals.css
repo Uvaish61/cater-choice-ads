@@ -68,6 +68,11 @@
   }
 }
 
+@keyframes hero-gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -81,5 +86,16 @@
       oklch(0.98 0.015 150) 0%,
       oklch(1 0 0) 60%
     );
+  }
+  .animate-hero-gradient {
+    background: linear-gradient(
+      135deg,
+      #f0fdf4 0%,
+      #ffffff 40%,
+      #dcfce7 70%,
+      #ffffff 100%
+    );
+    background-size: 300% 300%;
+    animation: hero-gradient 10s ease infinite;
   }
 }

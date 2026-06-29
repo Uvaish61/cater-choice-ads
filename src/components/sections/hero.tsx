@@ -23,11 +23,12 @@ const fadeUp: Variants = {
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] bg-white flex items-center overflow-hidden">
-      {/* Background decoration */}
+    <section className="relative min-h-[90vh] animate-hero-gradient flex items-center overflow-hidden">
+      {/* Background blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-green-100/60 blur-3xl" />
-        <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-green-50/80 blur-2xl" />
+        <div className="absolute -top-48 -right-48 w-[700px] h-[700px] rounded-full bg-green-200/40 blur-3xl" />
+        <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full bg-green-100/50 blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-green-50/60 blur-2xl" />
       </div>
 
       <div className="relative z-10 container mx-auto px-4 py-16 sm:py-24 grid lg:grid-cols-2 gap-12 items-center">
@@ -39,12 +40,12 @@ export function Hero() {
             </Badge>
           </motion.div>
 
-          <motion.div custom={1} variants={fadeUp} initial="hidden" animate="visible" className="space-y-3">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 text-balance">
+          <motion.div custom={1} variants={fadeUp} initial="hidden" animate="visible" className="space-y-4">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-gray-900 text-balance">
               {heroContent.headline}{" "}
-              <span className="text-green-600">{heroContent.headlineAccent}</span>
+              <span className="text-green-600 drop-shadow-sm">{heroContent.headlineAccent}</span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-xl leading-relaxed">
+            <p className="text-lg sm:text-xl text-gray-500 max-w-lg leading-relaxed">
               {heroContent.subheadline}
             </p>
           </motion.div>
@@ -54,12 +55,12 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row gap-3">
               <Button
                 size="lg"
-                className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-6 text-base shadow-lg shadow-green-200 group cursor-pointer"
+                className="group bg-green-600 hover:bg-green-700 active:bg-green-800 text-white font-bold px-8 py-6 text-base shadow-xl shadow-green-300/50 hover:shadow-green-400/50 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
                 onClick={() => document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth" })}
               >
                 <Phone className="mr-2 h-5 w-5" />
                 {heroContent.primaryCta}
-                <ArrowRight className="ml-2 h-4 w-4 group-hover/button:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 h-4 w-4 translate-x-0 group-hover:translate-x-1 transition-transform duration-200" />
               </Button>
               <a
                 href={WHATSAPP_URL}
@@ -67,7 +68,7 @@ export function Hero() {
                 rel="noopener noreferrer"
                 className={cn(
                   buttonVariants({ size: "lg" }),
-                  "bg-[#25D366] hover:bg-[#20BD5C] text-white font-semibold px-8 py-6 text-base shadow-lg"
+                  "bg-[#25D366] hover:bg-[#20BD5C] active:bg-[#1aab52] text-white font-bold px-8 py-6 text-base shadow-xl shadow-green-300/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
                 )}
               >
                 <MessageCircle className="mr-2 h-5 w-5" />
@@ -79,7 +80,7 @@ export function Hero() {
               download
               className={cn(
                 buttonVariants({ variant: "outline", size: "lg" }),
-                "border-green-300 text-green-700 hover:bg-green-50 font-semibold px-8 py-6 text-base w-fit"
+                "border-2 border-green-400 text-green-700 hover:bg-green-600 hover:text-white hover:border-green-600 font-bold px-8 py-6 text-base w-fit transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
               )}
             >
               <Download className="mr-2 h-5 w-5" />
@@ -127,7 +128,22 @@ export function Hero() {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 }}
+          className="relative"
         >
+          {/* Floating badge */}
+          <motion.div
+            initial={{ opacity: 0, y: -8, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ delay: 1.1, duration: 0.5, type: "spring", stiffness: 200 }}
+            className="absolute -top-5 left-4 z-10 flex items-center gap-2.5 bg-white border border-green-100 rounded-full pl-2.5 pr-4 py-1.5 shadow-lg shadow-green-100/60"
+          >
+            <span className="relative flex h-2.5 w-2.5 shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-70" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500" />
+            </span>
+            <span className="text-xs font-semibold text-gray-800">10,000+ Products Available</span>
+          </motion.div>
+
           <HeroForm />
         </motion.div>
       </div>
