@@ -46,7 +46,7 @@ export function WhyUs() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 whileHover={{ y: -4 }}
-                className="group p-7 rounded-2xl border border-gray-100 bg-white hover:border-green-200 hover:shadow-lg hover:shadow-green-50 transition-all duration-300"
+                className="group p-7 rounded-2xl border border-gray-100 bg-white hover:border-green-200 hover:shadow-xl hover:shadow-green-200/40 transition-all duration-300"
               >
                 <div className="mb-5">
                   <div className="inline-flex p-3.5 rounded-2xl bg-green-50 group-hover:bg-green-100 transition-colors">

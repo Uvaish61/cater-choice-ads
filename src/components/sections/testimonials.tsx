@@ -6,7 +6,7 @@ import { testimonials } from "@/data/content";
 
 export function Testimonials() {
   return (
-    <section className="py-20 sm:py-28 bg-gray-50">
+    <section className="py-20 sm:py-28 bg-white">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -37,7 +37,7 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative bg-white rounded-2xl p-7 shadow-sm border border-gray-100 hover:shadow-md hover:border-green-100 transition-all"
+              className="relative bg-white rounded-2xl p-7 shadow-sm border border-gray-100 hover:shadow-xl hover:shadow-green-100/40 hover:border-green-100 hover:-translate-y-1 transition-all duration-300"
             >
               {/* Quote icon */}
               <Quote className="absolute top-6 right-6 h-8 w-8 text-green-100" />

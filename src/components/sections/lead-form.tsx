@@ -62,7 +62,7 @@ export function LeadForm() {
   };
 
   return (
-    <section id="lead-form" className="py-20 sm:py-28 bg-gray-50">
+    <section id="lead-form" className="py-20 sm:py-28 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
           <motion.div
