@@ -1,6 +1,7 @@
 import { Hero } from "@/components/sections/hero";
 import { ProblemSolution } from "@/components/sections/problem-solution";
 import { Categories } from "@/components/sections/categories";
+import { FeaturedProducts } from "@/components/sections/featured-products";
 import { Stats } from "@/components/sections/stats";
 import { WhyUs } from "@/components/sections/why-us";
 import { Testimonials } from "@/components/sections/testimonials";
@@ -17,6 +18,7 @@ export default function LandingPage() {
       <Hero />
       <ProblemSolution />
       <Categories />
+      <FeaturedProducts />
       <Stats />
       <WhyUs />
       <Testimonials />
