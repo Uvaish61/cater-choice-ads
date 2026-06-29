@@ -62,7 +62,9 @@ export function Testimonials() {
                   <p className="text-xs text-gray-500">
                     {testimonial.role} · {testimonial.company}
                   </p>
-                  <p className="text-xs text-green-600 mt-0.5">📍 {testimonial.location}</p>
+                  <p className="text-xs text-green-600 mt-0.5 flex items-center gap-1">
+                    <MapPin className="h-3 w-3 shrink-0" />{testimonial.location}
+                  </p>
                 </div>
               </div>
             </motion.div>
