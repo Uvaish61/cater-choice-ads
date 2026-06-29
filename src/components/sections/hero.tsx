@@ -2,12 +2,14 @@
 
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
+import Image from "next/image";
 import { CheckCircle, Truck, Tag, UserCheck, Phone, Download, ArrowRight, Award, ChefHat, MessageCircle } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { heroContent } from "@/data/content";
 import { COMPANY, WHATSAPP_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import warehouseImg from "@/assets/images/warehouse.jpg";
 
 const iconMap = { check: CheckCircle, truck: Truck, tag: Tag, user: UserCheck, award: Award, chef: ChefHat };
 
@@ -129,11 +131,15 @@ export function Hero() {
           className="relative hidden lg:block"
         >
           <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-            <div className="aspect-[4/3]">
-              <img
-                src="/warehouse.jpg"
+            <div className="aspect-[4/3] relative">
+              <Image
+                src={warehouseImg}
                 alt="Cater Choice wholesale catering supplies"
-                className="w-full h-[125%] object-cover object-bottom -mt-[25%]"
+                fill
+                className="object-cover object-bottom scale-[1.25] origin-bottom"
+                sizes="(max-width: 1024px) 0px, 50vw"
+                priority
+                placeholder="blur"
               />
             </div>
 

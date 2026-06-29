@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Truck, Clock, MapPin } from "lucide-react";
+import ukMapImg from "@/assets/images/uk-map.jpg";
 import { coverageRegions } from "@/data/content";
 
 const deliverySteps = [
@@ -43,10 +45,13 @@ export function Coverage() {
             className="relative"
           >
             <div className="aspect-[3/4] rounded-3xl overflow-hidden border-2 border-green-100 shadow-lg relative">
-              <img
-                src="/uk-map.jpg"
+              <Image
+                src={ukMapImg}
                 alt="UK delivery coverage map"
-                className="w-full h-full object-cover object-center"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                placeholder="blur"
               />
               {/* Hue overlay — turns red dots green, leaves gray map unchanged */}
               <div className="absolute inset-0 bg-green-500 mix-blend-hue pointer-events-none" />
