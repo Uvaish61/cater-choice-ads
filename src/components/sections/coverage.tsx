@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Truck, Clock, MapPin, ClipboardList, PackageCheck, CheckCircle2 } from "lucide-react";
+import { Truck, Clock, MapPin, ClipboardList, PackageCheck, CheckCircle2, Package } from "lucide-react";
 import ukMapImg from "@/assets/images/uk-map.jpg";
 import { coverageRegions } from "@/data/content";
 
@@ -152,7 +152,10 @@ export function Coverage() {
             </div>
 
             <div className="p-5 bg-green-50 rounded-2xl border border-green-100">
-              <p className="text-sm font-semibold text-green-800 mb-1">📦 Free delivery available</p>
+              <p className="text-sm font-semibold text-green-800 mb-1 flex items-center gap-1.5">
+                <Package className="h-4 w-4 text-green-600 shrink-0" />
+                Free delivery available
+              </p>
               <p className="text-xs text-green-700">On orders over £150. See terms for full details.</p>
             </div>
           </motion.div>

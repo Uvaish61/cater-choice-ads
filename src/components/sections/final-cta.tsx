@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle, Phone } from "lucide-react";
+import { MessageCircle, Phone, Users, Check } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { finalCtaContent } from "@/data/content";
 import { COMPANY, WHATSAPP_URL } from "@/lib/constants";
@@ -38,7 +38,8 @@ export function FinalCta() {
               transition={{ duration: 0.5 }}
               className="inline-block bg-white/20 text-white text-sm font-semibold px-5 py-2 rounded-full border border-white/30"
             >
-              🎉 Join 5,000+ Happy Trade Customers
+              <Users className="inline h-4 w-4 mr-1.5 opacity-80" />
+              Join 5,000+ Happy Trade Customers
             </motion.div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight text-balance">
               {finalCtaContent.headline}
@@ -83,7 +84,7 @@ export function FinalCta() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-green-200 text-sm">
             {["No minimum order", "Trade account in 24 hours", "Free delivery over £150"].map((item) => (
               <span key={item} className="flex items-center gap-1.5">
-                <span className="text-green-300">✓</span> {item}
+                <Check className="h-3.5 w-3.5 text-green-300 shrink-0" /> {item}
               </span>
             ))}
           </div>
