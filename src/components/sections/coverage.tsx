@@ -15,7 +15,7 @@ const deliverySteps = [
 
 export function Coverage() {
   return (
-    <section className="py-20 sm:py-28 bg-[#f4fdf7]">
+    <section className="py-[60px] sm:py-[120px] bg-[#f4fdf7]">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -27,7 +27,7 @@ export function Coverage() {
           <span className="inline-block text-green-600 font-semibold text-sm uppercase tracking-wider mb-3">
             UK Delivery
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
             We Deliver Across <span className="text-green-600">All of the UK</span>
           </h2>
           <p className="text-gray-500 text-lg">

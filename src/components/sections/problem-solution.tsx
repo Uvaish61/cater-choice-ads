@@ -20,7 +20,7 @@ const bonusSolutions = [
 
 export function ProblemSolution() {
   return (
-    <section className="py-20 sm:py-28 bg-white">
+    <section className="py-[60px] sm:py-[120px] bg-white">
       <div className="container mx-auto px-4 max-w-5xl">
 
         {/* Header */}
@@ -31,7 +31,7 @@ export function ProblemSolution() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
             {problemSolutionContent.problemHeadline}
           </h2>
           <p className="text-gray-500 text-lg max-w-xl mx-auto">

@@ -6,7 +6,7 @@ import { testimonials } from "@/data/content";
 
 export function Testimonials() {
   return (
-    <section className="py-20 sm:py-28 bg-white">
+    <section className="py-[60px] sm:py-[120px] bg-white">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -18,7 +18,7 @@ export function Testimonials() {
           <span className="inline-block text-green-600 font-semibold text-sm uppercase tracking-wider mb-3">
             Customer Stories
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
             What Our <span className="text-green-600">Trade Customers</span> Say
           </h2>
           <div className="flex items-center justify-center gap-1 mb-2">

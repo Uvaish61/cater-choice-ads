@@ -47,7 +47,7 @@ const products = [
 
 export function FeaturedProducts() {
   return (
-    <section className="py-20 sm:py-28 bg-white">
+    <section className="py-[60px] sm:py-[120px] bg-white">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -59,7 +59,7 @@ export function FeaturedProducts() {
           <span className="inline-block text-green-600 font-semibold text-sm uppercase tracking-wider mb-3">
             Packaging Range
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
             Quality Packaging at <span className="text-green-600">Trade Prices</span>
           </h2>
           <p className="text-gray-500 text-lg">

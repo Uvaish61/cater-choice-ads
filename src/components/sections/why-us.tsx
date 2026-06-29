@@ -15,7 +15,7 @@ const iconMap: Record<string, React.ElementType> = {
 
 export function WhyUs() {
   return (
-    <section className="py-20 sm:py-28 bg-[#f4fdf7]">
+    <section className="py-[60px] sm:py-[120px] bg-[#f4fdf7]">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -27,7 +27,7 @@ export function WhyUs() {
           <span className="inline-block text-green-600 font-semibold text-sm uppercase tracking-wider mb-3">
             Why Cater Choice
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
             Built for <span className="text-green-600">Catering Businesses</span>
           </h2>
           <p className="text-gray-500 text-lg">

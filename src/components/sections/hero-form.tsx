@@ -54,7 +54,7 @@ export function HeroForm() {
 
   if (submitted) {
     return (
-      <div className="bg-white rounded-2xl border border-green-100 shadow-2xl shadow-green-200/40 p-8 text-center">
+      <div className="bg-white rounded-2xl border border-green-100 border-t-[3px] border-t-green-600 shadow-2xl shadow-green-200/40 p-8 text-center">
         <div className="inline-flex p-4 bg-green-50 rounded-full mb-4">
           <CheckCircle className="h-10 w-10 text-green-500" />
         </div>
@@ -67,7 +67,7 @@ export function HeroForm() {
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 shadow-2xl shadow-green-200/40 p-6 sm:p-8">
+    <div className="bg-white rounded-2xl border border-gray-100 border-t-[3px] border-t-green-600 shadow-2xl shadow-green-200/40 p-6 sm:p-8">
       {/* Card header */}
       <div className="mb-6">
         <span className="inline-block bg-green-50 text-green-700 text-xs font-semibold px-3 py-1 rounded-full mb-3">

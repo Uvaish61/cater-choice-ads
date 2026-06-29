@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 export function FinalCta() {
   return (
-    <section className="py-20 sm:py-28 gradient-green relative overflow-hidden">
+    <section className="py-[60px] sm:py-[120px] gradient-green relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-white/10 blur-3xl" />
         <div className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-white/10 blur-2xl" />
@@ -41,7 +41,7 @@ export function FinalCta() {
               <Users className="inline h-4 w-4 mr-1.5 opacity-80" />
               Join 5,000+ Happy Trade Customers
             </motion.div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight text-balance">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight text-balance">
               {finalCtaContent.headline}
             </h2>
             <p className="text-green-100 text-lg sm:text-xl max-w-xl mx-auto leading-relaxed">

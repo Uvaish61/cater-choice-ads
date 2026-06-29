@@ -81,7 +81,7 @@ export function Catalog() {
   };
 
   return (
-    <section className="py-20 sm:py-28 bg-green-900 relative overflow-hidden">
+    <section className="py-[60px] sm:py-[120px] bg-green-900 relative overflow-hidden">
       {/* Background texture */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-green-800/60 blur-3xl" />
@@ -119,7 +119,7 @@ export function Catalog() {
               Free Download · No Sign-up Required
             </span>
 
-            <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight mb-4">
+            <h2 className="text-4xl font-bold text-white leading-tight mb-4">
               Everything You Need to{" "}
               <span className="text-green-300">Source Smarter</span>
             </h2>

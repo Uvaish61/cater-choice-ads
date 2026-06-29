@@ -62,7 +62,7 @@ export function LeadForm() {
   };
 
   return (
-    <section id="lead-form" className="py-20 sm:py-28 bg-white">
+    <section id="lead-form" className="py-[60px] sm:py-[120px] bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
           <motion.div
@@ -75,7 +75,7 @@ export function LeadForm() {
             <span className="inline-block text-green-600 font-semibold text-sm uppercase tracking-wider mb-3">
               Get Started Today
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Request Your <span className="text-green-600">Free Trade Quote</span>
             </h2>
             <p className="text-gray-500 text-lg">

@@ -81,7 +81,7 @@ function StatCard({
 export function Stats() {
   return (
     <section
-      className="py-24 sm:py-32 relative overflow-hidden"
+      className="py-[60px] sm:py-[120px] relative overflow-hidden"
       style={{
         background: "linear-gradient(135deg, #1a5c38 0%, #2d8653 100%)",
       }}
@@ -121,7 +121,7 @@ export function Stats() {
           <span className="inline-block text-green-300/80 font-semibold text-xs uppercase tracking-widest mb-3">
             By the numbers
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
+          <h2 className="text-4xl font-bold text-white mb-3">
             Trusted Across the UK
           </h2>
           <p className="text-green-200/70 text-lg max-w-xl mx-auto">
