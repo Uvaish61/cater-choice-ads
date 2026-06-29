@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { Truck, BadgePercent, ShieldCheck, UtensilsCrossed, Package, BadgeDollarSign, Download, ArrowRight, BookOpen } from "lucide-react";
+import { Truck, BadgePercent, ShieldCheck, UtensilsCrossed, Package, BadgeDollarSign, ArrowRight, BookOpen } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { heroContent } from "@/data/content";
