@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { MessageCircle, X } from "lucide-react";
-import { WHATSAPP_URL, COMPANY } from "@/lib/constants";
+import { WHATSAPP_URL } from "@/lib/constants";
 
 export function WhatsAppButton() {
   const [showTooltip, setShowTooltip] = useState(false);

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, MessageCircle, Phone } from "lucide-react";
+import { MessageCircle, Phone } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { finalCtaContent } from "@/data/content";
 import { COMPANY, WHATSAPP_URL } from "@/lib/constants";
