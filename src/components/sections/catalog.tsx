@@ -9,7 +9,8 @@ import {
   Layers,
   Truck,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { COMPANY } from "@/lib/constants";
 
 const whatsInside = [
@@ -139,16 +140,17 @@ export function Catalog() {
                 <p className="text-gray-500 text-sm leading-relaxed mb-6">
                   Get instant access to our full 2024 trade catalog — no sign-up required.
                 </p>
-                <Button
-                  asChild
-                  size="lg"
-                  className="w-full bg-green-600 hover:bg-green-700 text-white font-bold h-12 rounded-xl shadow-md shadow-green-100"
+                <a
+                  href={COMPANY.catalogUrl}
+                  download
+                  className={cn(
+                    buttonVariants({ size: "lg" }),
+                    "w-full bg-green-600 hover:bg-green-700 text-white font-bold h-12 rounded-xl shadow-md shadow-green-100"
+                  )}
                 >
-                  <a href={COMPANY.catalogUrl} download>
-                    <Download className="mr-2 h-4 w-4" />
-                    Download Free Catalog
-                  </a>
-                </Button>
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Free Catalog
+                </a>
               </div>
             </div>
           </motion.div>

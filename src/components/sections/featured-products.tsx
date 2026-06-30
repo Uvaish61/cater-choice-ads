@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Tag, ArrowRight } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import kidsMealBoxesImg from "@/assets/images/kids-meal-boxes.jpg";
 import frostedCarrierBagsImg from "@/assets/images/frosted-carrier-bags.jpg";
@@ -110,12 +109,9 @@ export function FeaturedProducts() {
                       e.preventDefault();
                       document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className={cn(
-                      buttonVariants({ size: "sm" }),
-                      "bg-green-600 hover:bg-green-700 text-white text-xs font-semibold gap-1"
-                    )}
+                    className="text-green-600 font-semibold text-sm hover:underline flex items-center gap-1"
                   >
-                    Get Price <ArrowRight className="h-3 w-3" />
+                    Get a quote <ArrowRight className="h-3 w-3" />
                   </a>
                 </div>
               </div>
@@ -131,22 +127,19 @@ export function FeaturedProducts() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-center mt-12"
         >
-          <p className="text-gray-500 text-sm mb-4">
-            These are just 3 of our <strong className="text-gray-700">2,500+ packaging lines</strong>. Get the full catalog with trade pricing.
+          <p className="text-gray-500 text-sm">
+            These are just 3 of our <strong className="text-gray-700">2,500+ packaging lines</strong>.{" "}
+            <a
+              href="#lead-form"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="text-green-600 font-semibold hover:underline inline-flex items-center gap-1"
+            >
+              Get a quote <ArrowRight className="h-3.5 w-3.5" />
+            </a>
           </p>
-          <a
-            href="#lead-form"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className={cn(
-              buttonVariants({ size: "lg" }),
-              "bg-green-600 hover:bg-green-700 text-white font-semibold px-8"
-            )}
-          >
-            Request Full Packaging Catalog <ArrowRight className="ml-2 h-4 w-4" />
-          </a>
         </motion.div>
       </div>
     </section>
