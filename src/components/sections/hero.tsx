@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { Truck, BadgePercent, ShieldCheck, UtensilsCrossed, Package, BadgeDollarSign, ArrowRight, BookOpen } from "lucide-react";
@@ -30,13 +31,20 @@ const fadeUp: Variants = {
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] animate-hero-gradient flex items-center overflow-hidden">
-      {/* Background blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-48 -right-48 w-[700px] h-[700px] rounded-full bg-green-200/40 blur-3xl" />
-        <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full bg-green-100/50 blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-green-50/60 blur-2xl" />
-      </div>
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      {/* Hero background photo — UK food warehouse / produce market */}
+      <Image
+        src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1920&q=80&auto=format&fit=crop"
+        alt=""
+        fill
+        priority
+        className="object-cover object-center"
+        sizes="100vw"
+      />
+      {/* Left overlay: fully opaque on left (text readable), fades right (photo shows through) */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/92 to-white/40 z-[1]" />
+      {/* Bottom vignette so phone bar reads cleanly */}
+      <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/35 to-transparent z-[1]" />
 
       <div className="relative z-10 container mx-auto px-4 py-16 sm:py-24 grid lg:grid-cols-2 gap-12 items-center">
         {/* Left — copy */}
@@ -162,7 +170,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.5 }}
-        className="absolute bottom-0 left-0 right-0 bg-green-700 text-white py-3 px-4 text-center text-sm"
+        className="absolute bottom-0 left-0 right-0 z-20 bg-green-700/90 backdrop-blur-sm text-white py-3 px-4 text-center text-sm"
       >
         Call us now:{" "}
         <a href={`tel:${COMPANY.phone}`} className="font-bold underline underline-offset-2 hover:text-green-200 transition-colors">

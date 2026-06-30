@@ -8,6 +8,7 @@ import {
   Tag,
   Layers,
 } from "lucide-react";
+import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { COMPANY } from "@/lib/constants";
@@ -124,10 +125,24 @@ export function Catalog() {
                 </div>
               </div>
 
-              <div className="p-8 text-center">
-                <div className="inline-flex p-5 bg-green-50 rounded-full mb-5">
-                  <BookOpen className="h-12 w-12 text-green-600" />
+              {/* Product photo */}
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700&q=80&auto=format&fit=crop"
+                  alt="Trade catalog products"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+                <div className="absolute bottom-4 left-5">
+                  <span className="inline-block bg-green-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                    2024 Edition · 10,000+ Products
+                  </span>
                 </div>
+              </div>
+
+              <div className="p-8 text-center">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   Download Complete Product Catalog
                 </h3>
