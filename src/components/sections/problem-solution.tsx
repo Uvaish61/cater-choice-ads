@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { XCircle, CheckCircle } from "lucide-react";
+import { XCircle, CheckCircle, AlertTriangle, BadgeCheck } from "lucide-react";
 import { problemSolutionContent } from "@/data/content";
 
 const pairs = [
@@ -61,13 +61,15 @@ export function ProblemSolution() {
         {/* Column labels — desktop only */}
         <div className="hidden lg:flex mb-5 items-center">
           <div className="flex-1 text-center">
-            <span className="inline-block bg-orange-50 text-orange-700 font-semibold px-5 py-1.5 rounded-full text-sm border border-orange-200">
+            <span className="inline-flex items-center gap-1.5 bg-orange-50 text-orange-700 font-semibold px-4 py-1.5 rounded-full text-sm border border-orange-200">
+              <AlertTriangle className="h-3.5 w-3.5 shrink-0" />
               The Old Way — Frustrating
             </span>
           </div>
           <div className="w-20 shrink-0" />
           <div className="flex-1 text-center">
-            <span className="inline-block bg-green-50 text-green-700 font-semibold px-5 py-1.5 rounded-full text-sm border border-green-200">
+            <span className="inline-flex items-center gap-1.5 bg-green-50 text-green-700 font-semibold px-4 py-1.5 rounded-full text-sm border border-green-200">
+              <BadgeCheck className="h-3.5 w-3.5 shrink-0" />
               The Cater Choice Way — Simple
             </span>
           </div>
@@ -87,12 +89,22 @@ export function ProblemSolution() {
                 className="flex flex-col lg:flex-row lg:items-start gap-3 lg:gap-0"
               >
                 {/* Problem card */}
-                <div
-                  className="flex-1 flex gap-3.5 p-5 rounded-2xl border border-orange-200 shadow-sm"
+                <motion.div
+                  className="flex-1 flex gap-3.5 p-5 rounded-2xl cursor-default"
                   style={{
                     marginTop: probOffset,
-                    backgroundColor: "#fff7ed",
+                    backgroundColor: "#fde8d8",
+                    borderTop: "1px solid #fed7aa",
+                    borderRight: "1px solid #fed7aa",
+                    borderBottom: "1px solid #fed7aa",
+                    borderLeft: "4px solid #ef4444",
+                    boxShadow: "0 1px 6px rgba(234,88,12,0.10)",
                   }}
+                  whileHover={{
+                    scale: 1.02,
+                    boxShadow: "0 6px 24px rgba(234,88,12,0.22)",
+                  }}
+                  transition={{ duration: 0.18, ease: "easeOut" }}
                 >
                   <div
                     className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center shrink-0"
@@ -104,7 +116,7 @@ export function ProblemSolution() {
                     <p className="font-semibold text-stone-800 text-sm mb-1">{pair.problem.title}</p>
                     <p className="text-xs text-stone-500 leading-relaxed">{pair.problem.description}</p>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Desktop curved arrow */}
                 <div className="hidden lg:flex items-center justify-center w-20 shrink-0 self-center">
@@ -201,12 +213,22 @@ export function ProblemSolution() {
                 </div>
 
                 {/* Solution card */}
-                <div
-                  className="flex-1 flex gap-3.5 p-5 rounded-2xl border border-green-200 shadow-sm"
+                <motion.div
+                  className="flex-1 flex gap-3.5 p-5 rounded-2xl cursor-default"
                   style={{
                     marginTop: solOffset,
                     backgroundColor: "#f0fdf4",
+                    borderTop: "1px solid #bbf7d0",
+                    borderRight: "1px solid #bbf7d0",
+                    borderBottom: "1px solid #bbf7d0",
+                    borderLeft: "4px solid #16a34a",
+                    boxShadow: "0 1px 6px rgba(22,163,74,0.12)",
                   }}
+                  whileHover={{
+                    scale: 1.02,
+                    boxShadow: "0 6px 24px rgba(22,163,74,0.26)",
+                  }}
+                  transition={{ duration: 0.18, ease: "easeOut" }}
                 >
                   <div
                     className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center shrink-0"
@@ -218,7 +240,7 @@ export function ProblemSolution() {
                     <p className="font-semibold text-stone-800 text-sm mb-1">{pair.solution.title}</p>
                     <p className="text-xs text-stone-500 leading-relaxed">{pair.solution.description}</p>
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
             );
           })}
