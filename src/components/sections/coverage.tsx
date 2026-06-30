@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Truck, Clock, MapPin, ClipboardList, PackageCheck, CheckCircle2, Package } from "lucide-react";
@@ -7,10 +8,10 @@ import ukMapImg from "@/assets/images/uk-map.jpg";
 import { coverageRegions } from "@/data/content";
 
 const deliverySteps = [
-  { icon: ClipboardList, title: "Place Your Order", desc: "Online or by phone, Mon–Fri" },
-  { icon: PackageCheck, title: "Picked & Packed", desc: "Same day if ordered before 2pm" },
-  { icon: Truck, title: "Dispatched", desc: "With tracked courier service" },
-  { icon: CheckCircle2, title: "Delivered", desc: "To your door, on time" },
+  { icon: ClipboardList, title: "Place Order" },
+  { icon: PackageCheck, title: "Picked & Packed" },
+  { icon: Truck, title: "Dispatched" },
+  { icon: CheckCircle2, title: "Delivered" },
 ];
 
 export function Coverage() {
@@ -126,28 +127,26 @@ export function Coverage() {
                 <Clock className="h-5 w-5 text-green-600" />
                 How It Works
               </h3>
-              <div className="relative">
-                <div className="absolute left-5 top-5 bottom-5 w-0.5 bg-green-100" />
-                <div className="space-y-4">
-                  {deliverySteps.map((step, i) => (
+              <div className="flex items-center gap-1">
+                {deliverySteps.map((step, i) => (
+                  <Fragment key={step.title}>
                     <motion.div
-                      key={step.title}
-                      initial={{ opacity: 0, x: 10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      initial={{ opacity: 0, y: 8 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.1 }}
-                      className="flex items-center gap-4 relative"
+                      className="flex flex-col items-center gap-2 flex-1"
                     >
-                      <div className="w-10 h-10 rounded-full bg-white border-2 border-green-200 flex items-center justify-center shrink-0 z-10 shadow-sm">
+                      <div className="w-10 h-10 rounded-full bg-white border-2 border-green-200 flex items-center justify-center shadow-sm">
                         <step.icon className="h-5 w-5 text-green-600" />
                       </div>
-                      <div>
-                        <p className="font-semibold text-gray-900 text-sm">{step.title}</p>
-                        <p className="text-xs text-gray-500">{step.desc}</p>
-                      </div>
+                      <p className="text-xs font-semibold text-gray-700 text-center leading-tight">{step.title}</p>
                     </motion.div>
-                  ))}
-                </div>
+                    {i < deliverySteps.length - 1 && (
+                      <div className="w-6 h-px bg-green-200 shrink-0 mb-5" />
+                    )}
+                  </Fragment>
+                ))}
               </div>
             </div>
 
