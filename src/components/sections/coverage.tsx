@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Truck, Clock, MapPin, ClipboardList, PackageCheck, CheckCircle2, Package } from "lucide-react";
-import ukMapImg from "@/assets/images/uk-map.jpg";
+import ukMapImg from "@/assets/images/uk-map-clean.png";
 import { coverageRegions } from "@/data/content";
 
 const deliverySteps = [
@@ -45,36 +45,32 @@ export function Coverage() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="aspect-[3/4] rounded-3xl overflow-hidden border-2 border-green-100 shadow-lg relative">
-              {/* grayscale strips colour from pre-drawn image dots so only code pins are visible */}
+            <div className="aspect-[3/4] rounded-3xl overflow-hidden border-2 border-green-100 shadow-lg relative bg-white">
               <Image
                 src={ukMapImg}
                 alt="UK delivery coverage map"
                 fill
-                className="object-cover object-center grayscale"
+                className="object-contain object-center"
                 sizes="(max-width: 1024px) 100vw, 40vw"
-                placeholder="blur"
               />
-              {/* Subtle green tint */}
-              <div className="absolute inset-0 bg-green-400/10 pointer-events-none" />
-              {/* Animated pin markers — all major UK cities */}
+              {/* Animated pin markers — positions calculated for clean map with object-contain in 3:4 container */}
               {[
-                { top: "13%", left: "47%", city: "Inverness" },
-                { top: "28%", left: "37%", city: "Glasgow" },
-                { top: "28%", left: "53%", city: "Edinburgh" },
-                { top: "43%", left: "18%", city: "Belfast" },
-                { top: "42%", left: "62%", city: "Newcastle" },
-                { top: "52%", left: "57%", city: "Leeds" },
-                { top: "56%", left: "44%", city: "Liverpool" },
-                { top: "54%", left: "54%", city: "Manchester" },
-                { top: "58%", left: "60%", city: "Sheffield" },
-                { top: "62%", left: "51%", city: "Stoke" },
-                { top: "61%", left: "63%", city: "Nottingham" },
-                { top: "65%", left: "62%", city: "Leicester" },
-                { top: "68%", left: "54%", city: "Birmingham" },
-                { top: "74%", left: "35%", city: "Cardiff" },
-                { top: "75%", left: "46%", city: "Bristol" },
-                { top: "75%", left: "68%", city: "London" },
+                { top: "26%", left: "52%", city: "Inverness" },
+                { top: "40%", left: "33%", city: "Glasgow" },
+                { top: "40%", left: "49%", city: "Edinburgh" },
+                { top: "49%", left: "22%", city: "Belfast" },
+                { top: "46%", left: "63%", city: "Newcastle" },
+                { top: "55%", left: "64%", city: "Leeds" },
+                { top: "60%", left: "38%", city: "Liverpool" },
+                { top: "58%", left: "57%", city: "Manchester" },
+                { top: "61%", left: "63%", city: "Sheffield" },
+                { top: "64%", left: "54%", city: "Stoke" },
+                { top: "63%", left: "70%", city: "Nottingham" },
+                { top: "66%", left: "70%", city: "Leicester" },
+                { top: "69%", left: "59%", city: "Birmingham" },
+                { top: "74%", left: "40%", city: "Cardiff" },
+                { top: "75%", left: "52%", city: "Bristol" },
+                { top: "74%", left: "72%", city: "London" },
               ].map((pin) => (
                 <div
                   key={pin.city}
