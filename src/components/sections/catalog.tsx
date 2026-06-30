@@ -1,34 +1,16 @@
 "use client";
 
-import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {
   CheckCircle,
   Download,
-  Loader2,
-  Mail,
-  Phone,
   BookOpen,
   Tag,
   Layers,
   Truck,
-  ShieldCheck,
 } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { COMPANY } from "@/lib/constants";
-import { cn } from "@/lib/utils";
-
-const schema = z.object({
-  email: z.string().email("Enter a valid email address"),
-  phone: z.string().min(7, "Enter a valid phone number"),
-});
-
-type FormValues = z.infer<typeof schema>;
 
 const whatsInside = [
   {
@@ -54,32 +36,6 @@ const whatsInside = [
 ];
 
 export function Catalog() {
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const downloadRef = useRef<HTMLAnchorElement>(null);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormValues>({ resolver: zodResolver(schema) });
-
-  const onSubmit = async (data: FormValues) => {
-    setSubmitting(true);
-    try {
-      await fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, source: "catalog" }),
-      });
-    } finally {
-      setSubmitting(false);
-      setSubmitted(true);
-      // Trigger PDF download after a short delay so the success UI renders first
-      setTimeout(() => downloadRef.current?.click(), 300);
-    }
-  };
-
   return (
     <section className="py-[60px] sm:py-[120px] bg-green-900 relative overflow-hidden">
       {/* Background texture */}
@@ -95,15 +51,6 @@ export function Catalog() {
           }}
         />
       </div>
-
-      {/* Hidden auto-download link */}
-      <a
-        ref={downloadRef}
-        href={COMPANY.catalogUrl}
-        download
-        className="hidden"
-        aria-hidden
-      />
 
       <div className="relative z-10 container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
@@ -139,7 +86,7 @@ export function Catalog() {
                   className="flex items-start gap-4"
                 >
                   <div className="mt-0.5 flex-shrink-0 w-9 h-9 rounded-xl bg-green-800 border border-green-700 flex items-center justify-center">
-                    <item.icon className="h-4.5 w-4.5 text-green-300 h-[18px] w-[18px]" />
+                    <item.icon className="h-[18px] w-[18px] text-green-300" />
                   </div>
                   <div>
                     <p className="font-semibold text-white text-sm">{item.title}</p>
@@ -163,7 +110,7 @@ export function Catalog() {
             </div>
           </motion.div>
 
-          {/* Right — gated form card */}
+          {/* Right — direct download card */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -182,113 +129,26 @@ export function Catalog() {
                 </div>
               </div>
 
-              <div className="p-8">
-                {submitted ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-6"
-                  >
-                    <div className="inline-flex p-4 bg-green-50 rounded-full mb-4">
-                      <CheckCircle className="h-10 w-10 text-green-500" />
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">
-                      Your download has started!
-                    </h3>
-                    <p className="text-gray-500 text-sm leading-relaxed mb-5">
-                      The PDF is downloading now. Our team will also be in touch to help with your order.
-                    </p>
-                    <a
-                      href={COMPANY.catalogUrl}
-                      download
-                      className="inline-flex items-center gap-2 text-green-700 text-sm font-semibold hover:underline"
-                    >
-                      <Download className="h-4 w-4" />
-                      Click here if the download didn&apos;t start
-                    </a>
-                  </motion.div>
-                ) : (
-                  <>
-                    <div className="mb-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-1">
-                        Download Complete Product Catalog
-                      </h3>
-                      <p className="text-gray-500 text-sm">
-                        Enter your details below to get instant access.
-                      </p>
-                    </div>
-
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                      <div className="space-y-1.5">
-                        <Label htmlFor="cat-email" className="text-sm font-medium text-gray-700">
-                          Email Address
-                        </Label>
-                        <div className="relative">
-                          <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
-                          <Input
-                            id="cat-email"
-                            type="email"
-                            placeholder="you@restaurant.co.uk"
-                            className={cn(
-                              "h-11 pl-9 rounded-xl border-gray-200 focus-visible:ring-green-500",
-                              errors.email && "border-red-300"
-                            )}
-                            {...register("email")}
-                          />
-                        </div>
-                        {errors.email && (
-                          <p className="text-red-500 text-xs">{errors.email.message}</p>
-                        )}
-                      </div>
-
-                      <div className="space-y-1.5">
-                        <Label htmlFor="cat-phone" className="text-sm font-medium text-gray-700">
-                          Phone Number
-                        </Label>
-                        <div className="relative">
-                          <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
-                          <Input
-                            id="cat-phone"
-                            type="tel"
-                            placeholder="+44 7700 000000"
-                            className={cn(
-                              "h-11 pl-9 rounded-xl border-gray-200 focus-visible:ring-green-500",
-                              errors.phone && "border-red-300"
-                            )}
-                            {...register("phone")}
-                          />
-                        </div>
-                        {errors.phone && (
-                          <p className="text-red-500 text-xs">{errors.phone.message}</p>
-                        )}
-                      </div>
-
-                      <Button
-                        type="submit"
-                        size="lg"
-                        disabled={submitting}
-                        className="w-full bg-green-600 hover:bg-green-700 text-white font-bold h-12 rounded-xl shadow-md shadow-green-100 cursor-pointer mt-2"
-                      >
-                        {submitting ? (
-                          <>
-                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            Preparing download...
-                          </>
-                        ) : (
-                          <>
-                            <Download className="mr-2 h-4 w-4" />
-                            Download Complete Product Catalog
-                          </>
-                        )}
-                      </Button>
-                    </form>
-
-                    <div className="mt-5 flex items-start gap-2 text-xs text-gray-400">
-                      <ShieldCheck className="h-3.5 w-3.5 text-green-500 shrink-0 mt-0.5" />
-                      No spam — we&apos;ll only use your details to send trade offers and product updates. Unsubscribe anytime.
-                    </div>
-                  </>
-                )}
+              <div className="p-8 text-center">
+                <div className="inline-flex p-5 bg-green-50 rounded-full mb-5">
+                  <BookOpen className="h-12 w-12 text-green-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  Download Complete Product Catalog
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                  Get instant access to our full 2024 trade catalog — no sign-up required.
+                </p>
+                <Button
+                  asChild
+                  size="lg"
+                  className="w-full bg-green-600 hover:bg-green-700 text-white font-bold h-12 rounded-xl shadow-md shadow-green-100"
+                >
+                  <a href={COMPANY.catalogUrl} download>
+                    <Download className="mr-2 h-4 w-4" />
+                    Download Free Catalog
+                  </a>
+                </Button>
               </div>
             </div>
           </motion.div>
