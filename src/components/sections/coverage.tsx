@@ -46,23 +46,35 @@ export function Coverage() {
             className="relative"
           >
             <div className="aspect-[3/4] rounded-3xl overflow-hidden border-2 border-green-100 shadow-lg relative">
+              {/* grayscale strips colour from pre-drawn image dots so only code pins are visible */}
               <Image
                 src={ukMapImg}
                 alt="UK delivery coverage map"
                 fill
-                className="object-cover object-center"
+                className="object-cover object-center grayscale"
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 placeholder="blur"
               />
-              {/* Hue overlay — turns red dots green, leaves gray map unchanged */}
-              <div className="absolute inset-0 bg-green-500 mix-blend-hue pointer-events-none" />
-              {/* Pin markers */}
+              {/* Subtle green tint */}
+              <div className="absolute inset-0 bg-green-400/10 pointer-events-none" />
+              {/* Animated pin markers — all major UK cities */}
               {[
-                { top: "20%", left: "45%", city: "Edinburgh" },
-                { top: "35%", left: "35%", city: "Manchester" },
-                { top: "45%", left: "48%", city: "Birmingham" },
-                { top: "60%", left: "55%", city: "London" },
-                { top: "50%", left: "20%", city: "Cardiff" },
+                { top: "13%", left: "47%", city: "Inverness" },
+                { top: "28%", left: "37%", city: "Glasgow" },
+                { top: "28%", left: "53%", city: "Edinburgh" },
+                { top: "43%", left: "18%", city: "Belfast" },
+                { top: "42%", left: "62%", city: "Newcastle" },
+                { top: "52%", left: "57%", city: "Leeds" },
+                { top: "56%", left: "44%", city: "Liverpool" },
+                { top: "54%", left: "54%", city: "Manchester" },
+                { top: "58%", left: "60%", city: "Sheffield" },
+                { top: "62%", left: "51%", city: "Stoke" },
+                { top: "61%", left: "63%", city: "Nottingham" },
+                { top: "65%", left: "62%", city: "Leicester" },
+                { top: "68%", left: "54%", city: "Birmingham" },
+                { top: "74%", left: "35%", city: "Cardiff" },
+                { top: "75%", left: "46%", city: "Bristol" },
+                { top: "75%", left: "68%", city: "London" },
               ].map((pin) => (
                 <div
                   key={pin.city}
@@ -75,7 +87,7 @@ export function Coverage() {
                     <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900" />
                   </div>
                   {/* Pulse ring */}
-                  <span className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-50 scale-150" />
+                  <span className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-60 scale-150" />
                   {/* Dot */}
                   <div className="relative w-3 h-3 bg-green-500 group-hover/pin:bg-green-400 group-hover/pin:scale-150 rounded-full border-2 border-white shadow-md transition-transform duration-200" />
                 </div>
