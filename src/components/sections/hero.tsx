@@ -2,13 +2,22 @@
 
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { BadgePercent, ArrowRight, BookOpen } from "lucide-react";
+import { Truck, BadgePercent, ShieldCheck, UtensilsCrossed, Package, BadgeDollarSign, ArrowRight, BookOpen } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { heroContent } from "@/data/content";
 import { COMPANY, WHATSAPP_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { HeroForm } from "@/components/sections/hero-form";
+
+const iconMap = {
+  truck: Truck,
+  tag:   BadgePercent,
+  award: ShieldCheck,
+  chef:  UtensilsCrossed,
+  check: Package,
+  user:  BadgeDollarSign,
+};
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -88,8 +97,26 @@ export function Hero() {
             </a>
           </motion.div>
 
-          {/* Social proof */}
+          {/* Trust badges */}
           <motion.div custom={3} variants={fadeUp} initial="hidden" animate="visible">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+              {heroContent.trustBadges.map((badge) => {
+                const Icon = iconMap[badge.icon as keyof typeof iconMap] ?? Package;
+                return (
+                  <div
+                    key={badge.label}
+                    className="flex items-center gap-2 bg-white rounded-xl border border-gray-100 px-3 py-2.5 shadow-sm"
+                  >
+                    <Icon className="h-4 w-4 text-green-600 shrink-0" />
+                    <span className="text-xs font-medium text-gray-700">{badge.label}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
+
+          {/* Social proof */}
+          <motion.div custom={4} variants={fadeUp} initial="hidden" animate="visible">
             <div className="flex items-center gap-4 text-sm text-gray-500">
               <div className="flex -space-x-2">
                 {["R", "H", "C", "M"].map((initial) => (
