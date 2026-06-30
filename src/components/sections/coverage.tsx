@@ -45,50 +45,56 @@ export function Coverage() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            {/* group enables map zoom on hover; overflow-hidden clips the scaled image */}
-            <div className="aspect-[3/4] rounded-3xl overflow-hidden border-2 border-green-100 shadow-lg relative bg-white group cursor-zoom-in">
+            <div className="aspect-[3/4] rounded-3xl overflow-hidden border-2 border-green-100 shadow-lg hover:shadow-2xl hover:shadow-green-200/60 hover:border-green-300 transition-all duration-500 relative bg-white">
               <Image
                 src={ukMapImg}
                 alt="UK delivery coverage map"
                 fill
-                className="object-contain object-center transition-transform duration-500 ease-out group-hover:scale-110"
+                className="object-contain object-center"
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />
               {/*
-                Positions are % of the container.
-                Image is square; displayed with object-contain in a 3:4 container
-                → image fills full width, occupies 75% of container height
-                → 12.5% empty space top & bottom
-                Formula: container_top = 12.5 + (image_y% × 0.75)
-                         container_left = image_x%  (no horizontal offset)
+                Positions derived from geographic coordinates.
+                Image is square in a 3:4 container → image occupies 75% of height, 12.5% gap top/bottom.
+                Bounds: lat_max=59.46, lat_range=9.47, lng_min=−9.41, lng_range=12.89
+                top%  = 12.5 + ((59.46 − lat) / 9.47) × 75
+                left% = (lng + 9.41) / 12.89 × 100
               */}
               {[
-                { top: "22%", left: "44%", city: "Inverness" },
-                { top: "39%", left: "37%", city: "Glasgow" },
-                { top: "38%", left: "49%", city: "Edinburgh" },
-                { top: "47%", left: "30%", city: "Belfast" },
-                { top: "44%", left: "57%", city: "Newcastle" },
-                { top: "52%", left: "56%", city: "Leeds" },
-                { top: "55%", left: "40%", city: "Liverpool" },
-                { top: "55%", left: "51%", city: "Manchester" },
-                { top: "58%", left: "54%", city: "Sheffield" },
-                { top: "62%", left: "47%", city: "Stoke" },
-                { top: "61%", left: "58%", city: "Nottingham" },
-                { top: "65%", left: "57%", city: "Leicester" },
-                { top: "68%", left: "49%", city: "Birmingham" },
-                { top: "72%", left: "37%", city: "Cardiff" },
-                { top: "73%", left: "44%", city: "Bristol" },
-                { top: "72%", left: "61%", city: "London" },
+                { top: "40.3%", left: "48.3%", city: "Edinburgh",   tip: "below" },
+                { top: "41%",   left: "40%",   city: "Glasgow",     tip: "below" },
+                { top: "48%",   left: "60.5%", city: "Newcastle",   tip: "above" },
+                { top: "51%",   left: "27%",   city: "Belfast",     tip: "right" },
+                { top: "57.3%", left: "61%",   city: "Leeds",       tip: "right" },
+                { top: "59.9%", left: "55.6%", city: "Manchester",  tip: "left"  },
+                { top: "60.5%", left: "49.8%", city: "Liverpool",   tip: "left"  },
+                { top: "60.7%", left: "61.6%", city: "Sheffield",   tip: "right" },
+                { top: "63.7%", left: "56.1%", city: "Stoke",       tip: "left"  },
+                { top: "64.1%", left: "64%",   city: "Nottingham",  tip: "right" },
+                { top: "66.6%", left: "64.2%", city: "Leicester",   tip: "right" },
+                { top: "67.8%", left: "58.3%", city: "Birmingham",  tip: "above" },
+                { top: "75.5%", left: "72%",   city: "London",      tip: "above" },
+                { top: "75.7%", left: "48.3%", city: "Cardiff",     tip: "left"  },
+                { top: "75.9%", left: "52.9%", city: "Bristol",     tip: "below" },
               ].map((pin) => (
                 <div
                   key={pin.city}
                   className="absolute group/pin cursor-pointer"
                   style={{ top: pin.top, left: pin.left }}
                 >
-                  {/* Tooltip — sits above the pin, not affected by map zoom */}
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 bg-gray-900 text-white text-xs font-semibold rounded-lg whitespace-nowrap opacity-0 group-hover/pin:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                  {/* Tooltip — direction controlled per-pin to avoid crowding */}
+                  <div className={[
+                    "absolute px-2.5 py-1 bg-gray-900 text-white text-xs font-semibold rounded-lg whitespace-nowrap opacity-0 group-hover/pin:opacity-100 transition-opacity duration-200 pointer-events-none z-10",
+                    pin.tip === "above"  && "bottom-full left-1/2 -translate-x-1/2 mb-2",
+                    pin.tip === "below"  && "top-full left-1/2 -translate-x-1/2 mt-2",
+                    pin.tip === "right"  && "left-full top-1/2 -translate-y-1/2 ml-2",
+                    pin.tip === "left"   && "right-full top-1/2 -translate-y-1/2 mr-2",
+                  ].filter(Boolean).join(" ")}>
                     {pin.city}
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900" />
+                    {pin.tip === "above" && <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900" />}
+                    {pin.tip === "below" && <div className="absolute bottom-full left-1/2 -translate-x-1/2 border-4 border-transparent border-b-gray-900" />}
+                    {pin.tip === "right" && <div className="absolute right-full top-1/2 -translate-y-1/2 border-4 border-transparent border-r-gray-900" />}
+                    {pin.tip === "left"  && <div className="absolute left-full top-1/2 -translate-y-1/2 border-4 border-transparent border-l-gray-900" />}
                   </div>
                   {/* Pulse ring */}
                   <span className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-60 scale-150" />
