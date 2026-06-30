@@ -45,40 +45,48 @@ export function Coverage() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="aspect-[3/4] rounded-3xl overflow-hidden border-2 border-green-100 shadow-lg relative bg-white">
+            {/* group enables map zoom on hover; overflow-hidden clips the scaled image */}
+            <div className="aspect-[3/4] rounded-3xl overflow-hidden border-2 border-green-100 shadow-lg relative bg-white group cursor-zoom-in">
               <Image
                 src={ukMapImg}
                 alt="UK delivery coverage map"
                 fill
-                className="object-contain object-center"
+                className="object-contain object-center transition-transform duration-500 ease-out group-hover:scale-110"
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />
-              {/* Animated pin markers — positions calculated for clean map with object-contain in 3:4 container */}
+              {/*
+                Positions are % of the container.
+                Image is square; displayed with object-contain in a 3:4 container
+                → image fills full width, occupies 75% of container height
+                → 12.5% empty space top & bottom
+                Formula: container_top = 12.5 + (image_y% × 0.75)
+                         container_left = image_x%  (no horizontal offset)
+              */}
               {[
-                { top: "26%", left: "52%", city: "Inverness" },
-                { top: "40%", left: "33%", city: "Glasgow" },
-                { top: "40%", left: "49%", city: "Edinburgh" },
-                { top: "49%", left: "22%", city: "Belfast" },
-                { top: "46%", left: "63%", city: "Newcastle" },
-                { top: "55%", left: "64%", city: "Leeds" },
-                { top: "60%", left: "38%", city: "Liverpool" },
-                { top: "58%", left: "57%", city: "Manchester" },
-                { top: "61%", left: "63%", city: "Sheffield" },
-                { top: "64%", left: "54%", city: "Stoke" },
-                { top: "63%", left: "70%", city: "Nottingham" },
-                { top: "66%", left: "70%", city: "Leicester" },
-                { top: "69%", left: "59%", city: "Birmingham" },
+                { top: "28%", left: "50%", city: "Inverness" },
+                { top: "40%", left: "34%", city: "Glasgow" },
+                { top: "40%", left: "48%", city: "Edinburgh" },
+                { top: "50%", left: "22%", city: "Belfast" },
+                { top: "46%", left: "62%", city: "Newcastle" },
+                { top: "55%", left: "63%", city: "Leeds" },
+                { top: "59%", left: "40%", city: "Liverpool" },
+                { top: "58%", left: "56%", city: "Manchester" },
+                { top: "61%", left: "62%", city: "Sheffield" },
+                { top: "64%", left: "53%", city: "Stoke" },
+                { top: "63%", left: "66%", city: "Nottingham" },
+                { top: "66%", left: "65%", city: "Leicester" },
+                { top: "69%", left: "57%", city: "Birmingham" },
                 { top: "74%", left: "40%", city: "Cardiff" },
-                { top: "75%", left: "52%", city: "Bristol" },
-                { top: "74%", left: "72%", city: "London" },
+                { top: "74%", left: "51%", city: "Bristol" },
+                { top: "74%", left: "70%", city: "London" },
               ].map((pin) => (
                 <div
                   key={pin.city}
                   className="absolute group/pin cursor-pointer"
                   style={{ top: pin.top, left: pin.left }}
                 >
-                  {/* Tooltip */}
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 bg-gray-900 text-white text-xs font-semibold rounded-lg whitespace-nowrap opacity-0 group-hover/pin:opacity-100 transition-opacity duration-200 pointer-events-none">
+                  {/* Tooltip — sits above the pin, not affected by map zoom */}
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 bg-gray-900 text-white text-xs font-semibold rounded-lg whitespace-nowrap opacity-0 group-hover/pin:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
                     {pin.city}
                     <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900" />
                   </div>
