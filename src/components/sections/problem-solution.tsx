@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { XCircle, CheckCircle, AlertTriangle, BadgeCheck } from "lucide-react";
+import { XCircle, CheckCircle, AlertTriangle, BadgeCheck, ShieldCheck, Clock } from "lucide-react";
 import { problemSolutionContent } from "@/data/content";
 
 const pairs = [
@@ -11,7 +11,13 @@ const pairs = [
   { problem: problemSolutionContent.problems[3], solution: problemSolutionContent.solutions[1] },
 ];
 
-const trustBadges = ["ISO 9001 Certified", "HACCP Compliant", "BRC Approved", "FSA Registered", "15 Years Trading"];
+const trustBadges = [
+  { label: "ISO 9001 Certified", Icon: ShieldCheck, iconCls: "text-blue-600",    bgCls: "bg-blue-50",    borderCls: "border-blue-200",    textCls: "text-blue-700"    },
+  { label: "HACCP Compliant",    Icon: ShieldCheck, iconCls: "text-emerald-600", bgCls: "bg-emerald-50", borderCls: "border-emerald-200", textCls: "text-emerald-700" },
+  { label: "BRC Approved",       Icon: ShieldCheck, iconCls: "text-violet-600",  bgCls: "bg-violet-50",  borderCls: "border-violet-200",  textCls: "text-violet-700"  },
+  { label: "FSA Registered",     Icon: ShieldCheck, iconCls: "text-sky-600",     bgCls: "bg-sky-50",     borderCls: "border-sky-200",     textCls: "text-sky-700"     },
+  { label: "15 Years Trading",   Icon: Clock,       iconCls: "text-amber-600",   bgCls: "bg-amber-50",   borderCls: "border-amber-200",   textCls: "text-amber-700"   },
+];
 
 // Vertical stagger per row [problem-card marginTop, solution-card marginTop]
 // Intentionally non-uniform so the rhythm feels chosen, not generated
@@ -48,11 +54,16 @@ export function ProblemSolution() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          className="text-center mb-[6rem]"
         >
-          <h2 className="text-4xl font-bold text-stone-900 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-stone-900 mb-3 tracking-tight">
             {problemSolutionContent.problemHeadline}
           </h2>
+          {/* Gradient underline accent */}
+          <div
+            className="w-16 h-[3px] mx-auto rounded-full mb-5"
+            style={{ background: "linear-gradient(to right, #ea580c, #16a34a)" }}
+          />
           <p className="text-stone-500 text-lg max-w-xl mx-auto">
             Most catering businesses deal with at least one of these every week — here&apos;s how we fix each one.
           </p>
@@ -256,11 +267,11 @@ export function ProblemSolution() {
         >
           {trustBadges.map((badge) => (
             <div
-              key={badge}
-              className="flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-stone-200 shadow-sm"
+              key={badge.label}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm ${badge.bgCls} ${badge.borderCls}`}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
-              <span className="text-sm font-medium text-stone-600">{badge}</span>
+              <badge.Icon className={`h-3.5 w-3.5 shrink-0 ${badge.iconCls}`} strokeWidth={2.5} />
+              <span className={`text-sm font-semibold ${badge.textCls}`}>{badge.label}</span>
             </div>
           ))}
         </motion.div>
