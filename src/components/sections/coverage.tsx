@@ -63,22 +63,22 @@ export function Coverage() {
                          container_left = image_x%  (no horizontal offset)
               */}
               {[
-                { top: "28%", left: "50%", city: "Inverness" },
-                { top: "40%", left: "34%", city: "Glasgow" },
-                { top: "40%", left: "48%", city: "Edinburgh" },
-                { top: "50%", left: "22%", city: "Belfast" },
-                { top: "46%", left: "62%", city: "Newcastle" },
-                { top: "55%", left: "63%", city: "Leeds" },
-                { top: "59%", left: "40%", city: "Liverpool" },
-                { top: "58%", left: "56%", city: "Manchester" },
-                { top: "61%", left: "62%", city: "Sheffield" },
-                { top: "64%", left: "53%", city: "Stoke" },
-                { top: "63%", left: "66%", city: "Nottingham" },
-                { top: "66%", left: "65%", city: "Leicester" },
-                { top: "69%", left: "57%", city: "Birmingham" },
-                { top: "74%", left: "40%", city: "Cardiff" },
-                { top: "74%", left: "51%", city: "Bristol" },
-                { top: "74%", left: "70%", city: "London" },
+                { top: "22%", left: "44%", city: "Inverness" },
+                { top: "39%", left: "37%", city: "Glasgow" },
+                { top: "38%", left: "49%", city: "Edinburgh" },
+                { top: "47%", left: "30%", city: "Belfast" },
+                { top: "44%", left: "57%", city: "Newcastle" },
+                { top: "52%", left: "56%", city: "Leeds" },
+                { top: "55%", left: "40%", city: "Liverpool" },
+                { top: "55%", left: "51%", city: "Manchester" },
+                { top: "58%", left: "54%", city: "Sheffield" },
+                { top: "62%", left: "47%", city: "Stoke" },
+                { top: "61%", left: "58%", city: "Nottingham" },
+                { top: "65%", left: "57%", city: "Leicester" },
+                { top: "68%", left: "49%", city: "Birmingham" },
+                { top: "72%", left: "37%", city: "Cardiff" },
+                { top: "73%", left: "44%", city: "Bristol" },
+                { top: "72%", left: "61%", city: "London" },
               ].map((pin) => (
                 <div
                   key={pin.city}
