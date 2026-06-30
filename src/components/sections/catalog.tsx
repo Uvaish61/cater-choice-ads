@@ -7,7 +7,6 @@ import {
   BookOpen,
   Tag,
   Layers,
-  Truck,
 } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -28,11 +27,6 @@ const whatsInside = [
     icon: Tag,
     title: "Bulk Pricing Tiers & Volume Discounts",
     desc: "See exactly how much you save as your order size grows",
-  },
-  {
-    icon: Truck,
-    title: "UK Delivery Zones & Timelines",
-    desc: "Next-day, 48-hour and regional delivery schedule explained",
   },
 ];
 
@@ -73,7 +67,7 @@ export function Catalog() {
             </h2>
 
             <p className="text-green-200 text-base leading-relaxed mb-10">
-              Our complete 2024 trade catalog — used by 5,000+ UK catering businesses to plan orders, compare pricing, and reduce supply costs.
+              All 10,000+ products, trade pricing tiers, and UK delivery schedules in one PDF.
             </p>
 
             <ul className="space-y-5">

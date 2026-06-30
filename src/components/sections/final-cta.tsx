@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle, Phone, Users, Check } from "lucide-react";
+import { MessageCircle, Phone, Check } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { finalCtaContent } from "@/data/content";
 import { COMPANY, WHATSAPP_URL } from "@/lib/constants";
@@ -31,16 +31,6 @@ export function FinalCta() {
           className="max-w-3xl mx-auto space-y-8"
         >
           <div className="space-y-4">
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="inline-block bg-white/20 text-white text-sm font-semibold px-5 py-2 rounded-full border border-white/30"
-            >
-              <Users className="inline h-4 w-4 mr-1.5 opacity-80" />
-              Join 5,000+ Happy Trade Customers
-            </motion.div>
             <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight text-balance">
               {finalCtaContent.headline}
             </h2>

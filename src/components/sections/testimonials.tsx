@@ -1,13 +1,73 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Star, Quote, MapPin } from "lucide-react";
-import { testimonials } from "@/data/content";
+import { useRef, useState, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+import { Star, Quote, MapPin, Package, Users, Award, Truck } from "lucide-react";
+import { testimonials, stats } from "@/data/content";
+
+function useCountUp(target: number, duration = 1800, start = false) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!start) return;
+    let startTime: number | null = null;
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * target));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [start, target, duration]);
+  return count;
+}
+
+const statIcons = [Package, Users, Award, Truck];
+
+function StatItem({ value, suffix, label, index }: { value: string; suffix?: string; label: string; index: number }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true });
+  const numericValue = parseInt(value.replace(/,/g, ""), 10);
+  const count = useCountUp(numericValue, 1800, inView);
+  const Icon = statIcons[index] ?? Package;
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="flex flex-col items-center gap-1.5 text-center"
+    >
+      <div className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center mb-1">
+        <Icon className="h-5 w-5 text-green-600" />
+      </div>
+      <p className="text-2xl font-extrabold text-gray-900 tabular-nums leading-none">
+        {count.toLocaleString("en-GB")}{suffix}
+      </p>
+      <p className="text-xs font-medium text-gray-500">{label}</p>
+    </motion.div>
+  );
+}
 
 export function Testimonials() {
   return (
     <section className="py-[60px] sm:py-[120px] bg-white">
       <div className="container mx-auto px-4">
+
+        {/* Stat strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto mb-16 p-8 bg-green-50 rounded-2xl border border-green-100"
+        >
+          {stats.map((stat, i) => (
+            <StatItem key={stat.label} {...stat} index={i} />
+          ))}
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -21,7 +81,7 @@ export function Testimonials() {
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             What Our <span className="text-green-600">Trade Customers</span> Say
           </h2>
-          <div className="flex items-center justify-center gap-1 mb-2">
+          <div className="flex items-center justify-center gap-1">
             {[1, 2, 3, 4, 5].map((s) => (
               <Star key={s} className="h-5 w-5 text-amber-400 fill-amber-400" />
             ))}
@@ -39,10 +99,8 @@ export function Testimonials() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="relative bg-white rounded-2xl p-7 shadow-sm border border-gray-100 border-t-[3px] border-t-green-600 hover:shadow-xl hover:shadow-green-100/40 hover:border-green-100 hover:-translate-y-1 transition-all duration-300"
             >
-              {/* Quote icon */}
               <Quote className="absolute top-6 right-6 h-8 w-8 text-green-100" />
 
-              {/* Stars */}
               <div className="flex gap-0.5 mb-4">
                 {Array.from({ length: testimonial.rating }).map((_, si) => (
                   <Star key={si} className="h-4 w-4 text-amber-400 fill-amber-400" />
@@ -70,25 +128,6 @@ export function Testimonials() {
             </motion.div>
           ))}
         </div>
-
-        {/* Logos strip */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="mt-16 text-center"
-        >
-          <p className="text-sm text-gray-400 mb-6 uppercase tracking-wider font-medium">Trusted by businesses like</p>
-          <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10">
-            {["Premier Inn", "Wetherspoons", "Nando's", "Costa Coffee", "NHS", "Holiday Inn"].map((brand) => (
-              <span key={brand} className="text-gray-300 font-bold text-sm sm:text-base uppercase tracking-wider hover:text-gray-400 transition-colors">
-                {brand}
-              </span>
-            ))}
-          </div>
-          <p className="text-xs text-gray-400 mt-4">*Illustrative examples — replace with actual client logos</p>
-        </motion.div>
       </div>
     </section>
   );
