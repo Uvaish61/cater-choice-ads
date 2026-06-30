@@ -3,7 +3,6 @@ import { ProblemSolution } from "@/components/sections/problem-solution";
 import { Categories } from "@/components/sections/categories";
 import { FeaturedProducts } from "@/components/sections/featured-products";
 import { Stats } from "@/components/sections/stats";
-import { WhyUs } from "@/components/sections/why-us";
 import { Testimonials } from "@/components/sections/testimonials";
 import { Catalog } from "@/components/sections/catalog";
 import { Coverage } from "@/components/sections/coverage";
@@ -44,14 +43,6 @@ export default function LandingPage() {
       <AnimatedSection>
         <Stats />
       </AnimatedSection>
-
-      <WaveDivider bgColor={WHITE} fillColor={TINT} />
-
-      <AnimatedSection>
-        <WhyUs />
-      </AnimatedSection>
-
-      <WaveDivider bgColor={TINT} fillColor={WHITE} />
 
       <AnimatedSection>
         <Testimonials />
