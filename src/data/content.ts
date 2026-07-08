@@ -1,4 +1,4 @@
-import type { Testimonial, ProductCategory, Stat, Feature, CoverageRegion } from "@/types";
+import type { Testimonial, ProductCategory, Stat, Feature } from "@/types";
 
 export const heroContent = {
   badge: "Trusted by 5,000+ UK Catering Businesses",
@@ -247,17 +247,6 @@ export const testimonials: Testimonial[] = [
       "The no minimum order policy was a game changer for us. We can order exactly what each event needs without tying up thousands in stock. Highly recommend to any catering business.",
     rating: 5,
   },
-];
-
-export const coverageRegions: CoverageRegion[] = [
-  { name: "London & South East", deliveryTime: "Next Day" },
-  { name: "Midlands", deliveryTime: "Next Day" },
-  { name: "North West", deliveryTime: "Next Day" },
-  { name: "Yorkshire & Humber", deliveryTime: "Next Day" },
-  { name: "South West", deliveryTime: "1–2 Days" },
-  { name: "Scotland", deliveryTime: "1–2 Days" },
-  { name: "Wales", deliveryTime: "1–2 Days" },
-  { name: "Northern Ireland", deliveryTime: "2–3 Days" },
 ];
 
 export const finalCtaContent = {

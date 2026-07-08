@@ -35,7 +35,7 @@ export function Categories() {
             Product Range
           </span>
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            10,000+ Products Across <span className="text-green-600">8 Categories</span>
+            10,000+ Products Across <span className="text-green-600">Multiple Categories</span>
           </h2>
           <p className="text-gray-500 text-lg">
             Everything your catering business needs, from one trusted supplier.

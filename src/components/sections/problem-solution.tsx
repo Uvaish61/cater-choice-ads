@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { XCircle, CheckCircle, AlertTriangle, BadgeCheck, ShieldCheck, Clock } from "lucide-react";
+import { XCircle, CheckCircle, AlertTriangle, BadgeCheck } from "lucide-react";
 import { problemSolutionContent } from "@/data/content";
 
 const pairs = [
@@ -12,11 +12,11 @@ const pairs = [
 ];
 
 const trustBadges = [
-  { label: "ISO 9001 Certified", Icon: ShieldCheck, iconCls: "text-blue-600",    bgCls: "bg-blue-50",    borderCls: "border-blue-200",    textCls: "text-blue-700"    },
-  { label: "HACCP Compliant",    Icon: ShieldCheck, iconCls: "text-emerald-600", bgCls: "bg-emerald-50", borderCls: "border-emerald-200", textCls: "text-emerald-700" },
-  { label: "BRC Approved",       Icon: ShieldCheck, iconCls: "text-violet-600",  bgCls: "bg-violet-50",  borderCls: "border-violet-200",  textCls: "text-violet-700"  },
-  { label: "FSA Registered",     Icon: ShieldCheck, iconCls: "text-sky-600",     bgCls: "bg-sky-50",     borderCls: "border-sky-200",     textCls: "text-sky-700"     },
-  { label: "15 Years Trading",   Icon: Clock,       iconCls: "text-amber-600",   bgCls: "bg-amber-50",   borderCls: "border-amber-200",   textCls: "text-amber-700"   },
+  "ISO 9001 Certified",
+  "HACCP Compliant",
+  "BRC Approved",
+  "FSA Registered",
+  "15 Years Trading",
 ];
 
 // Vertical stagger per row [problem-card marginTop, solution-card marginTop]
@@ -267,11 +267,11 @@ export function ProblemSolution() {
         >
           {trustBadges.map((badge) => (
             <div
-              key={badge.label}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm ${badge.bgCls} ${badge.borderCls}`}
+              key={badge}
+              className="flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full border border-gray-100"
             >
-              <badge.Icon className={`h-3.5 w-3.5 shrink-0 ${badge.iconCls}`} strokeWidth={2.5} />
-              <span className={`text-sm font-semibold ${badge.textCls}`}>{badge.label}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+              <span className="font-medium text-gray-600">{badge}</span>
             </div>
           ))}
         </motion.div>

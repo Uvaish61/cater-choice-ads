@@ -1,11 +1,9 @@
 "use client";
 
-import { Fragment } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Truck, Clock, MapPin, ClipboardList, PackageCheck, CheckCircle2, Package } from "lucide-react";
+import { Truck, Clock, ClipboardList, PackageCheck, CheckCircle2, Package } from "lucide-react";
 import ukMapImg from "@/assets/images/uk-map-clean.png";
-import { coverageRegions } from "@/data/content";
 
 const deliverySteps = [
   { icon: ClipboardList, title: "Place Order" },
@@ -23,7 +21,7 @@ export function Coverage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="text-center max-w-2xl mx-auto mb-14"
         >
           <span className="inline-block text-green-600 font-semibold text-sm uppercase tracking-wider mb-3">
             UK Delivery
@@ -36,8 +34,8 @@ export function Coverage() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto items-start">
-          {/* Map placeholder */}
+        <div className="grid lg:grid-cols-2 gap-10 max-w-5xl mx-auto items-center">
+          {/* Map */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -45,37 +43,39 @@ export function Coverage() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="aspect-[3/4] rounded-3xl overflow-hidden border-2 border-green-100 shadow-lg hover:shadow-2xl hover:shadow-green-200/60 hover:border-green-300 transition-all duration-500 relative bg-white">
+            <div className="aspect-square rounded-3xl overflow-hidden border-2 border-green-100 shadow-lg hover:shadow-2xl hover:shadow-green-200/60 hover:border-green-300 transition-all duration-500 relative bg-white">
               <Image
                 src={ukMapImg}
                 alt="UK delivery coverage map"
                 fill
                 className="object-contain object-center"
-                sizes="(max-width: 1024px) 100vw, 40vw"
+                sizes="(max-width: 1024px) 90vw, 460px"
               />
               {/*
                 Positions derived from geographic coordinates.
-                Image is square in a 3:4 container → image occupies 75% of height, 12.5% gap top/bottom.
+                Source image is a 1254×1254 square with the UK shape baked in, and the
+                container is square too, so the image fills it edge-to-edge (no letterbox) —
+                the raw lat/lng fractions map 1:1 onto container percentages.
                 Bounds: lat_max=59.46, lat_range=9.47, lng_min=−9.41, lng_range=12.89
-                top%  = 12.5 + ((59.46 − lat) / 9.47) × 75
+                top%  = ((59.46 − lat) / 9.47) × 100
                 left% = (lng + 9.41) / 12.89 × 100
               */}
               {[
-                { top: "40.3%", left: "48.3%", city: "Edinburgh",   tip: "below" },
-                { top: "41%",   left: "40%",   city: "Glasgow",     tip: "below" },
-                { top: "48%",   left: "60.5%", city: "Newcastle",   tip: "above" },
-                { top: "51%",   left: "27%",   city: "Belfast",     tip: "right" },
-                { top: "57.3%", left: "61%",   city: "Leeds",       tip: "right" },
-                { top: "59.9%", left: "55.6%", city: "Manchester",  tip: "left"  },
-                { top: "60.5%", left: "49.8%", city: "Liverpool",   tip: "left"  },
-                { top: "60.7%", left: "61.6%", city: "Sheffield",   tip: "right" },
-                { top: "63.7%", left: "56.1%", city: "Stoke",       tip: "left"  },
-                { top: "64.1%", left: "64%",   city: "Nottingham",  tip: "right" },
-                { top: "66.6%", left: "64.2%", city: "Leicester",   tip: "right" },
-                { top: "67.8%", left: "58.3%", city: "Birmingham",  tip: "above" },
-                { top: "75.5%", left: "72%",   city: "London",      tip: "above" },
-                { top: "75.7%", left: "48.3%", city: "Cardiff",     tip: "left"  },
-                { top: "75.9%", left: "52.9%", city: "Bristol",     tip: "below" },
+                { top: "37.07%", left: "48.3%", city: "Edinburgh",   tip: "below" },
+                { top: "38%",    left: "40%",   city: "Glasgow",     tip: "below" },
+                { top: "47.33%", left: "60.5%", city: "Newcastle",   tip: "above" },
+                { top: "51.33%", left: "27%",   city: "Belfast",     tip: "right" },
+                { top: "59.73%", left: "61%",   city: "Leeds",       tip: "right" },
+                { top: "63.2%",  left: "55.6%", city: "Manchester",  tip: "left"  },
+                { top: "64%",    left: "49.8%", city: "Liverpool",   tip: "left"  },
+                { top: "64.27%", left: "61.6%", city: "Sheffield",   tip: "right" },
+                { top: "68.27%", left: "56.1%", city: "Stoke",       tip: "left"  },
+                { top: "68.8%",  left: "64%",   city: "Nottingham",  tip: "right" },
+                { top: "72.13%", left: "64.2%", city: "Leicester",   tip: "right" },
+                { top: "73.73%", left: "58.3%", city: "Birmingham",  tip: "above" },
+                { top: "84%",    left: "72%",   city: "London",      tip: "above" },
+                { top: "84.27%", left: "48.3%", city: "Cardiff",     tip: "left"  },
+                { top: "84.53%", left: "52.9%", city: "Bristol",     tip: "below" },
               ].map((pin) => (
                 <div
                   key={pin.city}
@@ -105,7 +105,7 @@ export function Coverage() {
             </div>
           </motion.div>
 
-          {/* Regions + delivery steps */}
+          {/* Process timeline + guarantee */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -113,71 +113,43 @@ export function Coverage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="space-y-6"
           >
-            {/* Regions grid */}
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                <Truck className="h-5 w-5 text-green-600" />
-                Delivery Times by Region
-              </h3>
-              <div className="grid grid-cols-2 gap-3">
-                {coverageRegions.map((region) => (
-                  <div
-                    key={region.name}
-                    className="flex items-center justify-between p-3 bg-gray-50 rounded-xl border border-gray-100"
-                  >
-                    <div className="flex items-center gap-2">
-                      <MapPin className="h-3.5 w-3.5 text-green-500 shrink-0" />
-                      <span className="text-sm text-gray-700 font-medium">{region.name}</span>
-                    </div>
-                    <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${
-                      region.deliveryTime === "Next Day"
-                        ? "bg-green-100 text-green-700"
-                        : region.deliveryTime === "1–2 Days"
-                        ? "bg-blue-50 text-blue-600"
-                        : "bg-orange-50 text-orange-600"
-                    }`}>
-                      {region.deliveryTime}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Process steps */}
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="p-6 bg-white rounded-2xl border border-green-100 shadow-sm">
+              <h3 className="font-semibold text-gray-900 mb-6 flex items-center gap-2">
                 <Clock className="h-5 w-5 text-green-600" />
                 How It Works
               </h3>
-              <div className="flex items-center gap-1">
+              <div className="space-y-5">
                 {deliverySteps.map((step, i) => (
-                  <Fragment key={step.title}>
-                    <motion.div
-                      initial={{ opacity: 0, y: 8 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.1 }}
-                      className="flex flex-col items-center gap-2 flex-1"
-                    >
-                      <div className="w-10 h-10 rounded-full bg-white border-2 border-green-200 flex items-center justify-center shadow-sm">
+                  <motion.div
+                    key={step.title}
+                    initial={{ opacity: 0, x: -8 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex items-center gap-4"
+                  >
+                    <div className="relative shrink-0">
+                      <div className="relative z-10 w-11 h-11 rounded-full bg-white border-2 border-green-200 flex items-center justify-center shadow-sm">
                         <step.icon className="h-5 w-5 text-green-600" />
                       </div>
-                      <p className="text-xs font-semibold text-gray-700 text-center leading-tight">{step.title}</p>
-                    </motion.div>
-                    {i < deliverySteps.length - 1 && (
-                      <div className="w-6 h-px bg-green-200 shrink-0 mb-5" />
-                    )}
-                  </Fragment>
+                      {i < deliverySteps.length - 1 && (
+                        <div className="absolute left-1/2 top-11 -translate-x-1/2 w-px h-5 bg-green-200" />
+                      )}
+                    </div>
+                    <p className="text-sm font-semibold text-gray-700">{step.title}</p>
+                  </motion.div>
                 ))}
               </div>
             </div>
 
-            <div className="p-5 bg-green-50 rounded-2xl border border-green-100">
-              <p className="text-sm font-semibold text-green-800 mb-1 flex items-center gap-1.5">
-                <Package className="h-4 w-4 text-green-600 shrink-0" />
-                Free delivery available
-              </p>
-              <p className="text-xs text-green-700">On orders over £150. See terms for full details.</p>
+            <div className="p-5 bg-green-50 rounded-2xl border border-green-100 flex items-center gap-4">
+              <div className="w-11 h-11 rounded-full bg-white border border-green-200 flex items-center justify-center shrink-0">
+                <Package className="h-5 w-5 text-green-600" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-green-800">Free delivery available</p>
+                <p className="text-xs text-green-700">On orders over £150. See terms for full details.</p>
+              </div>
             </div>
           </motion.div>
         </div>
