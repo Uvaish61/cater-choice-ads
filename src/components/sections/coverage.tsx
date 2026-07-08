@@ -16,12 +16,16 @@ const deliverySteps = [
 export function Coverage() {
   return (
     <section className="py-[60px] sm:py-[120px] bg-[#f4fdf7] relative overflow-hidden">
-      {/* Background vector — warehouse illustration, faded to a texture behind the content */}
+      {/* Background vector — warehouse illustration, faded to a texture behind the content. Reveals left-to-right, like Hero's photo. */}
       <Image
         src={warehouseIsometricImg}
         alt=""
         fill
-        className="object-cover object-center opacity-[0.07] grayscale"
+        className="object-cover object-center opacity-[0.2] grayscale"
+        style={{
+          maskImage: "linear-gradient(to right, transparent, black)",
+          WebkitMaskImage: "linear-gradient(to right, transparent, black)",
+        }}
       />
 
       <div className="container mx-auto px-4 relative z-10">
@@ -73,7 +77,6 @@ export function Coverage() {
                 { top: "37.07%", left: "48.3%", city: "Edinburgh",   tip: "below" },
                 { top: "38%",    left: "40%",   city: "Glasgow",     tip: "below" },
                 { top: "47.33%", left: "60.5%", city: "Newcastle",   tip: "above" },
-                { top: "51.33%", left: "27%",   city: "Belfast",     tip: "right" },
                 { top: "59.73%", left: "61%",   city: "Leeds",       tip: "right" },
                 { top: "63.2%",  left: "55.6%", city: "Manchester",  tip: "left"  },
                 { top: "64%",    left: "49.8%", city: "Liverpool",   tip: "left"  },

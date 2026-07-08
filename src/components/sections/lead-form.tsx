@@ -65,12 +65,16 @@ export function LeadForm() {
 
   return (
     <section id="lead-form" className="py-[60px] sm:py-[120px] bg-white relative overflow-hidden">
-      {/* Background vector — warehouse photo, faded to a texture behind the form */}
+      {/* Background vector — warehouse photo, faded to a texture behind the form. Reveals left-to-right, like Hero's photo. */}
       <Image
         src={warehouseInteriorImg}
         alt=""
         fill
-        className="object-cover object-center opacity-[0.07] grayscale"
+        className="object-cover object-center opacity-[0.2] grayscale"
+        style={{
+          maskImage: "linear-gradient(to right, transparent, black)",
+          WebkitMaskImage: "linear-gradient(to right, transparent, black)",
+        }}
       />
 
       <div className="container mx-auto px-4 relative z-10">
