@@ -1,8 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { XCircle, CheckCircle, AlertTriangle, BadgeCheck } from "lucide-react";
 import { problemSolutionContent } from "@/data/content";
+import warehouseInteriorImg from "@/assets/images/warehouse-interior.jpg";
+import warehouseIsometricImg from "@/assets/images/warehouse-isometric.jpg";
 
 const pairs = [
   { problem: problemSolutionContent.problems[0], solution: problemSolutionContent.solutions[3] },
@@ -256,6 +259,48 @@ export function ProblemSolution() {
             );
           })}
         </div>
+
+        {/* Proof — real infrastructure behind the solution claims */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-14 grid sm:grid-cols-2 gap-6"
+        >
+          <div className="relative rounded-2xl overflow-hidden border border-stone-200 shadow-sm">
+            <div className="relative aspect-[16/10]">
+              <Image
+                src={warehouseInteriorImg}
+                alt="Fully stocked warehouse"
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4">
+                <p className="text-white font-bold text-sm">10,000+ Products In Stock</p>
+                <p className="text-white/80 text-xs">Real warehouse, real availability — no empty promises</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-2xl overflow-hidden border border-stone-200 shadow-sm bg-white">
+            <div className="relative aspect-[16/10] bg-white">
+              <Image
+                src={warehouseIsometricImg}
+                alt="UK-wide delivery fleet"
+                fill
+                className="object-contain p-4"
+                sizes="(max-width: 640px) 100vw, 50vw"
+              />
+            </div>
+            <div className="px-4 py-3 border-t border-stone-100">
+              <p className="font-bold text-stone-800 text-sm">Fast UK-Wide Delivery</p>
+              <p className="text-stone-500 text-xs">Dedicated fleet, tracked dispatch, next-day as standard</p>
+            </div>
+          </div>
+        </motion.div>
 
         {/* Trust badges */}
         <motion.div
