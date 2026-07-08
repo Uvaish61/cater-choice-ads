@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   CheckCircle,
@@ -10,8 +11,8 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
+import { Toast } from "@/components/shared/toast";
 import { cn } from "@/lib/utils";
-import { COMPANY } from "@/lib/constants";
 
 const whatsInside = [
   {
@@ -32,6 +33,8 @@ const whatsInside = [
 ];
 
 export function Catalog() {
+  const [showToast, setShowToast] = useState(false);
+
   return (
     <section className="py-[60px] sm:py-[120px] bg-green-900 relative overflow-hidden">
       {/* Background texture */}
@@ -149,9 +152,9 @@ export function Catalog() {
                 <p className="text-gray-500 text-sm leading-relaxed mb-6">
                   Get instant access to our full 2024 trade catalog — no sign-up required.
                 </p>
-                <a
-                  href={COMPANY.catalogUrl}
-                  download
+                <button
+                  type="button"
+                  onClick={() => setShowToast(true)}
                   className={cn(
                     buttonVariants({ size: "lg" }),
                     "w-full bg-green-600 hover:bg-green-700 text-white font-bold h-12 rounded-xl shadow-md shadow-green-100"
@@ -159,13 +162,19 @@ export function Catalog() {
                 >
                   <Download className="mr-2 h-4 w-4" />
                   Download Free Catalog
-                </a>
+                </button>
               </div>
             </div>
           </motion.div>
 
         </div>
       </div>
+
+      <Toast
+        message="We will share the updated catalogue with you soon."
+        show={showToast}
+        onClose={() => setShowToast(false)}
+      />
     </section>
   );
 }
