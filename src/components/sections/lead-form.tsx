@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -19,6 +20,7 @@ import {
 } from "@/components/ui/select";
 import { COMPANY, WHATSAPP_URL, BUSINESS_TYPES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import warehouseInteriorImg from "@/assets/images/warehouse-interior.jpg";
 
 const schema = z.object({
   name: z.string().min(2, "Please enter your full name"),
@@ -62,8 +64,16 @@ export function LeadForm() {
   };
 
   return (
-    <section id="lead-form" className="py-[60px] sm:py-[120px] bg-white">
-      <div className="container mx-auto px-4">
+    <section id="lead-form" className="py-[60px] sm:py-[120px] bg-white relative overflow-hidden">
+      {/* Background vector — warehouse photo, faded to a texture behind the form */}
+      <Image
+        src={warehouseInteriorImg}
+        alt=""
+        fill
+        className="object-cover object-center opacity-[0.07] grayscale"
+      />
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

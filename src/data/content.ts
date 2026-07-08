@@ -22,67 +22,57 @@ export const problemSolutionContent = {
   problemHeadline: "Sound familiar?",
   problems: [
     {
-      icon: "x-circle",
+      icon: "package-x",
       title: "Unreliable Suppliers",
-      description:
-        "Stock outs at the worst times, delayed deliveries, and no communication when things go wrong.",
+      description: "Stock-outs, late drops, zero updates.",
     },
     {
-      icon: "x-circle",
+      icon: "pound-sterling",
       title: "Overpriced & No Trade Discounts",
-      description:
-        "Paying retail prices on bulk orders with no loyalty rewards or volume-based pricing.",
+      description: "Retail prices, even in bulk.",
     },
     {
-      icon: "x-circle",
+      icon: "boxes",
       title: "High Minimum Orders",
-      description:
-        "Forced to order more than you need, tying up cash flow and wasting storage space.",
+      description: "Overstocked shelves, tied-up cash.",
     },
     {
-      icon: "x-circle",
+      icon: "split",
       title: "Poor Product Range",
-      description:
-        "Having to deal with 5+ suppliers to get everything you need for your kitchen.",
+      description: "5+ suppliers just to stock one kitchen.",
     },
   ],
   solutionHeadline: "Why Restaurants Choose Cater Choice",
   solutions: [
     {
-      icon: "check-circle",
+      icon: "badge-percent",
       title: "Competitive Wholesale Pricing",
-      description:
-        "Volume discounts from day one. The more you buy, the more you save. Transparent, honest pricing every time.",
+      description: "Bigger orders, bigger savings.",
     },
     {
-      icon: "check-circle",
+      icon: "layout-grid",
       title: "Huge Range of Catering Products",
-      description:
-        "10,000+ products — from frozen chicken to packaging, sauces to bakery items. Everything in one place.",
+      description: "10,000+ products, one place.",
     },
     {
-      icon: "check-circle",
+      icon: "truck",
       title: "Fast UK-Wide Delivery",
-      description:
-        "Order before 2pm for next day delivery across mainland UK. Tracked and reliable, every time.",
+      description: "Next day, tracked, reliable.",
     },
     {
-      icon: "check-circle",
+      icon: "package-check",
       title: "Consistent Stock Availability",
-      description:
-        "Real-time inventory management means no nasty surprises. If stock is low, we tell you in advance.",
+      description: "Real-time stock, zero surprises.",
     },
     {
-      icon: "check-circle",
+      icon: "badge-check",
       title: "Trusted by Restaurants & Food Businesses",
-      description:
-        "5,000+ UK catering businesses rely on us. From independent restaurants to hotel chains.",
+      description: "5,000+ UK businesses rely on us.",
     },
     {
-      icon: "check-circle",
+      icon: "warehouse",
       title: "One-Stop Supply Solution",
-      description:
-        "One supplier, one account manager, one invoice. Stop juggling 5 different reps every week.",
+      description: "One supplier. One invoice. Done.",
     },
   ],
 };

@@ -1,11 +1,36 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { XCircle, CheckCircle, AlertTriangle, BadgeCheck } from "lucide-react";
+import {
+  AlertTriangle,
+  BadgeCheck,
+  PackageX,
+  PoundSterling,
+  Boxes,
+  Split,
+  BadgePercent,
+  LayoutGrid,
+  Truck,
+  PackageCheck,
+  Warehouse,
+} from "lucide-react";
 import { problemSolutionContent } from "@/data/content";
-import warehouseInteriorImg from "@/assets/images/warehouse-interior.jpg";
-import warehouseIsometricImg from "@/assets/images/warehouse-isometric.jpg";
+
+const problemIconMap = {
+  "package-x": PackageX,
+  "pound-sterling": PoundSterling,
+  boxes: Boxes,
+  split: Split,
+};
+
+const solutionIconMap = {
+  "badge-percent": BadgePercent,
+  "layout-grid": LayoutGrid,
+  truck: Truck,
+  "package-check": PackageCheck,
+  "badge-check": BadgeCheck,
+  warehouse: Warehouse,
+};
 
 const pairs = [
   { problem: problemSolutionContent.problems[0], solution: problemSolutionContent.solutions[3] },
@@ -93,6 +118,8 @@ export function ProblemSolution() {
         <div className="space-y-3">
           {pairs.map((pair, i) => {
             const [probOffset, solOffset] = rowStagger[i];
+            const ProblemIcon = problemIconMap[pair.problem.icon as keyof typeof problemIconMap] ?? PackageX;
+            const SolutionIcon = solutionIconMap[pair.solution.icon as keyof typeof solutionIconMap] ?? PackageCheck;
             return (
               <motion.div
                 key={i}
@@ -104,7 +131,7 @@ export function ProblemSolution() {
               >
                 {/* Problem card */}
                 <motion.div
-                  className="flex-1 flex gap-3.5 p-5 rounded-2xl cursor-default"
+                  className="flex-1 flex items-center gap-4 p-5 rounded-2xl cursor-default"
                   style={{
                     marginTop: probOffset,
                     backgroundColor: "#fde8d8",
@@ -121,14 +148,14 @@ export function ProblemSolution() {
                   transition={{ duration: 0.18, ease: "easeOut" }}
                 >
                   <div
-                    className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center shrink-0"
+                    className="w-14 h-14 rounded-2xl bg-orange-100 flex items-center justify-center shrink-0"
                     style={{ boxShadow: "0 0 16px 2px rgba(234,88,12,0.26)" }}
                   >
-                    <XCircle className="h-6 w-6 text-orange-500" strokeWidth={2} />
+                    <ProblemIcon className="h-7 w-7 text-orange-500" strokeWidth={2} />
                   </div>
                   <div>
-                    <p className="font-semibold text-stone-800 text-sm mb-1">{pair.problem.title}</p>
-                    <p className="text-xs text-stone-500 leading-relaxed">{pair.problem.description}</p>
+                    <p className="font-semibold text-stone-800 text-sm mb-0.5">{pair.problem.title}</p>
+                    <p className="text-xs text-stone-500">{pair.problem.description}</p>
                   </div>
                 </motion.div>
 
@@ -228,7 +255,7 @@ export function ProblemSolution() {
 
                 {/* Solution card */}
                 <motion.div
-                  className="flex-1 flex gap-3.5 p-5 rounded-2xl cursor-default"
+                  className="flex-1 flex items-center gap-4 p-5 rounded-2xl cursor-default"
                   style={{
                     marginTop: solOffset,
                     backgroundColor: "#f0fdf4",
@@ -245,62 +272,20 @@ export function ProblemSolution() {
                   transition={{ duration: 0.18, ease: "easeOut" }}
                 >
                   <div
-                    className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center shrink-0"
+                    className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center shrink-0"
                     style={{ boxShadow: "0 0 16px 2px rgba(22,163,74,0.26)" }}
                   >
-                    <CheckCircle className="h-6 w-6 text-green-600" strokeWidth={2} />
+                    <SolutionIcon className="h-7 w-7 text-green-600" strokeWidth={2} />
                   </div>
                   <div>
-                    <p className="font-semibold text-stone-800 text-sm mb-1">{pair.solution.title}</p>
-                    <p className="text-xs text-stone-500 leading-relaxed">{pair.solution.description}</p>
+                    <p className="font-semibold text-stone-800 text-sm mb-0.5">{pair.solution.title}</p>
+                    <p className="text-xs text-stone-500">{pair.solution.description}</p>
                   </div>
                 </motion.div>
               </motion.div>
             );
           })}
         </div>
-
-        {/* Proof — real infrastructure behind the solution claims */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-14 grid sm:grid-cols-2 gap-6"
-        >
-          <div className="relative rounded-2xl overflow-hidden border border-stone-200 shadow-sm">
-            <div className="relative aspect-[16/10]">
-              <Image
-                src={warehouseInteriorImg}
-                alt="Fully stocked warehouse"
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4">
-                <p className="text-white font-bold text-sm">10,000+ Products In Stock</p>
-                <p className="text-white/80 text-xs">Real warehouse, real availability — no empty promises</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="rounded-2xl overflow-hidden border border-stone-200 shadow-sm bg-white">
-            <div className="relative aspect-[16/10] bg-white">
-              <Image
-                src={warehouseIsometricImg}
-                alt="UK-wide delivery fleet"
-                fill
-                className="object-contain p-4"
-                sizes="(max-width: 640px) 100vw, 50vw"
-              />
-            </div>
-            <div className="px-4 py-3 border-t border-stone-100">
-              <p className="font-bold text-stone-800 text-sm">Fast UK-Wide Delivery</p>
-              <p className="text-stone-500 text-xs">Dedicated fleet, tracked dispatch, next-day as standard</p>
-            </div>
-          </div>
-        </motion.div>
 
         {/* Trust badges */}
         <motion.div

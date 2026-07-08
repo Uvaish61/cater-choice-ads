@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Truck, Clock, ClipboardList, PackageCheck, CheckCircle2, Package } from "lucide-react";
 import ukMapImg from "@/assets/images/uk-map-clean.png";
+import warehouseIsometricImg from "@/assets/images/warehouse-isometric.jpg";
 
 const deliverySteps = [
   { icon: ClipboardList, title: "Place Order" },
@@ -14,8 +15,16 @@ const deliverySteps = [
 
 export function Coverage() {
   return (
-    <section className="py-[60px] sm:py-[120px] bg-[#f4fdf7]">
-      <div className="container mx-auto px-4">
+    <section className="py-[60px] sm:py-[120px] bg-[#f4fdf7] relative overflow-hidden">
+      {/* Background vector — warehouse illustration, faded to a texture behind the content */}
+      <Image
+        src={warehouseIsometricImg}
+        alt=""
+        fill
+        className="object-cover object-center opacity-[0.07] grayscale"
+      />
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
