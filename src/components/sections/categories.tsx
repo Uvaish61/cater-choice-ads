@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import {
   Package, SprayCan, Wheat, Coffee,
-  Snowflake, CookingPot, Sandwich, Droplets, Milk, Pizza
+  Snowflake, CookingPot, Sandwich, Droplets, Milk, Pizza, Plus
 } from "lucide-react";
 import { categories } from "@/data/content";
 import { HighwayAnimation } from "@/components/shared/highway-animation";
@@ -79,6 +79,20 @@ export function Categories() {
               </motion.div>
             );
           })}
+
+          {/* Full-width row so it never breaks the grid's even divisibility */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: categories.length * 0.07 }}
+            className="col-span-2 lg:col-span-5 flex items-center justify-center gap-2 p-4 rounded-2xl border-2 border-dashed border-green-200 bg-green-50/50 text-center"
+          >
+            <Plus className="h-4 w-4 text-green-600 shrink-0" />
+            <span className="text-sm font-semibold text-green-700">
+              + Many more — 10,000+ products across all categories
+            </span>
+          </motion.div>
         </div>
 
         <motion.p

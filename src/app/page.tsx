@@ -1,6 +1,7 @@
 import { Hero } from "@/components/sections/hero";
 import { ProblemSolution } from "@/components/sections/problem-solution";
 import { Categories } from "@/components/sections/categories";
+import { ProductShowcase } from "@/components/sections/product-showcase";
 import { Testimonials } from "@/components/sections/testimonials";
 import { Catalog } from "@/components/sections/catalog";
 import { Coverage } from "@/components/sections/coverage";
@@ -32,6 +33,10 @@ export default function LandingPage() {
       </AnimatedSection>
 
       <WaveDivider bgColor={TINT} fillColor={WHITE} />
+
+      <AnimatedSection>
+        <ProductShowcase />
+      </AnimatedSection>
 
       <AnimatedSection>
         <Testimonials />

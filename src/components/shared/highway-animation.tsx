@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import catersChoiceLogoImg from "@/assets/images/cater-choice-logo.png";
 
 // Trimmed, background-only version of a "cinematic highway" scene:
 // sky gradient, two parallax hill layers, drifting clouds, a scrolling road,
@@ -34,6 +35,13 @@ export function HighwayAnimation() {
     }
     resize();
     window.addEventListener("resize", resize);
+
+    // Logo drawn on the trailer — loaded once, drawn once ready
+    const logoImage = new window.Image();
+    let logoLoaded = false;
+    logoImage.onload = () => { logoLoaded = true; };
+    logoImage.src = catersChoiceLogoImg.src;
+    const logoAspect = catersChoiceLogoImg.height / catersChoiceLogoImg.width;
 
     // ---- Reused config (no per-frame allocation) ----
     const clouds = [
@@ -173,14 +181,11 @@ export function HighwayAnimation() {
       }
 
       // logo
-      ctx!.font = `bold ${16 * scale}px system-ui, sans-serif`;
-      const logoY = y0 + 82 * scale;
-      const catersText = "Caters ";
-      ctx!.fillStyle = "#E53935";
-      ctx!.fillText(catersText, x0 + 14 * scale, logoY);
-      const catersWidth = ctx!.measureText(catersText).width;
-      ctx!.fillStyle = "#2E7D32";
-      ctx!.fillText("Choice", x0 + 14 * scale + catersWidth, logoY);
+      if (logoLoaded) {
+        const logoW = truckW * 0.36;
+        const logoH = logoW * logoAspect;
+        ctx!.drawImage(logoImage, x0 + 14 * scale, y0 + 68 * scale, logoW, logoH);
+      }
 
       // cab
       const cabW = truckW * 0.28;
