@@ -6,6 +6,7 @@ import {
   Snowflake, CookingPot, Sandwich, Droplets, Milk, Pizza
 } from "lucide-react";
 import { categories } from "@/data/content";
+import { HighwayAnimation } from "@/components/shared/highway-animation";
 
 const iconMap: Record<string, React.ElementType> = {
   snowflake: Snowflake,
@@ -22,8 +23,12 @@ const iconMap: Record<string, React.ElementType> = {
 
 export function Categories() {
   return (
-    <section className="py-[60px] sm:py-[120px] bg-[#f4fdf7]">
-      <div className="container mx-auto px-4">
+    <section className="py-[60px] sm:py-[120px] bg-[#f4fdf7] relative overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.15] grayscale">
+        <HighwayAnimation />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

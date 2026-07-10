@@ -44,7 +44,6 @@ const trustBadges = [
   "HACCP Compliant",
   "BRC Approved",
   "FSA Registered",
-  "15 Years Trading",
 ];
 
 // Vertical stagger per row [problem-card marginTop, solution-card marginTop]
