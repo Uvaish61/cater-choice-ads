@@ -157,7 +157,7 @@ export function ProblemSolution() {
                     <ProblemIcon className="h-7 w-7 text-orange-500" strokeWidth={2} />
                   </div>
                   <div>
-                    <p className="font-semibold text-stone-500 text-sm mb-0.5 line-through decoration-red-400 decoration-2">
+                    <p className="font-semibold text-stone-500 text-sm mb-0.5 line-through decoration-red-400/50 decoration-2">
                       {pair.problem.title}
                     </p>
                     <p className="text-xs text-stone-400">{pair.problem.description}</p>
