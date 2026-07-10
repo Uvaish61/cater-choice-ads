@@ -23,7 +23,7 @@ const iconMap: Record<string, React.ElementType> = {
 
 export function Categories() {
   return (
-    <section className="py-[60px] sm:py-[120px] bg-[#f4fdf7] relative overflow-hidden">
+    <section className="pt-10 sm:pt-16 pb-[60px] sm:pb-[120px] bg-[#f4fdf7] relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.15] grayscale">
         <HighwayAnimation />
       </div>

@@ -67,7 +67,7 @@ const curvePaths = [
 export function ProblemSolution() {
   return (
     <section
-      className="py-[60px] sm:py-[120px] relative overflow-hidden"
+      className="pt-[60px] sm:pt-[120px] pb-10 sm:pb-16 relative overflow-hidden"
       style={{
         backgroundColor: "#fafaf9",
         backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.052) 1px, transparent 1px)",
