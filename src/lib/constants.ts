@@ -1,7 +1,7 @@
 export const COMPANY = {
   name: "Cater Choice",
   tagline: "The UK's #1 Wholesale Catering Supplier",
-  phone: "+44 7700 900000",
+  phone: "+44 121 357 9100",
   whatsapp: "447700900000",
   email: "trade@caterchoice.co.uk",
   address: "Birmingham, West Midlands, UK",

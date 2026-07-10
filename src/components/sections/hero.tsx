@@ -170,13 +170,16 @@ export function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.5 }}
-        className="absolute bottom-0 left-0 right-0 z-20 bg-green-700/90 backdrop-blur-sm text-white py-3 px-4 text-center text-sm"
+        className="absolute bottom-0 left-0 right-0 z-20 bg-green-700/90 backdrop-blur-sm text-white py-2 px-4 text-center text-sm leading-tight"
       >
-        Call us now:{" "}
-        <a href={`tel:${COMPANY.phone}`} className="font-bold underline underline-offset-2 hover:text-green-200 transition-colors">
-          {COMPANY.phone}
-        </a>
-        {" "}— Mon–Fri 8am–6pm
+        <p>
+          Call us now:{" "}
+          <a href={`tel:${COMPANY.phone}`} className="font-bold underline underline-offset-2 hover:text-green-200 transition-colors">
+            {COMPANY.phone}
+          </a>
+        </p>
+        <p className="text-xs text-green-100 mt-1">Mon–Fri: 9am – 5:30pm</p>
+        <p className="text-xs text-green-100">Sat & Sun: 11am – 5pm</p>
       </motion.div>
     </section>
   );
