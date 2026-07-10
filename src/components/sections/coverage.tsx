@@ -86,7 +86,7 @@ export function Coverage() {
                 { top: "72.13%", left: "64.2%", city: "Leicester",   tip: "right" },
                 { top: "73.73%", left: "58.3%", city: "Birmingham",  tip: "above" },
                 { top: "84%",    left: "72%",   city: "London",      tip: "above" },
-                { top: "84.27%", left: "48.3%", city: "Cardiff",     tip: "left"  },
+                { top: "79.5%",  left: "47.8%", city: "Cardiff",     tip: "left"  },
                 { top: "84.53%", left: "52.9%", city: "Bristol",     tip: "below" },
               ].map((pin) => (
                 <div

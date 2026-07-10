@@ -13,6 +13,7 @@ import {
   Truck,
   PackageCheck,
   Warehouse,
+  Check,
 } from "lucide-react";
 import { problemSolutionContent } from "@/data/content";
 
@@ -40,10 +41,10 @@ const pairs = [
 ];
 
 const trustBadges = [
-  "ISO 9001 Certified",
-  "HACCP Compliant",
-  "BRC Approved",
-  "FSA Registered",
+  "10,000+ Products",
+  "Next Day Delivery",
+  "No MOQ Required",
+  "Trade Approved",
 ];
 
 // Vertical stagger per row [problem-card marginTop, solution-card marginTop]
@@ -99,7 +100,7 @@ export function ProblemSolution() {
         {/* Column labels — desktop only */}
         <div className="hidden lg:flex mb-5 items-center">
           <div className="flex-1 text-center">
-            <span className="inline-flex items-center gap-1.5 bg-orange-50 text-orange-700 font-semibold px-4 py-1.5 rounded-full text-sm border border-orange-200">
+            <span className="inline-flex items-center gap-1.5 bg-red-50 text-red-700 font-semibold px-4 py-1.5 rounded-full text-sm border border-red-200">
               <AlertTriangle className="h-3.5 w-3.5 shrink-0" />
               The Old Way — Frustrating
             </span>
@@ -130,7 +131,7 @@ export function ProblemSolution() {
               >
                 {/* Problem card */}
                 <motion.div
-                  className="flex-1 flex items-center gap-4 p-5 rounded-2xl cursor-default"
+                  className="relative flex-1 flex items-center gap-4 p-5 rounded-2xl cursor-default"
                   style={{
                     marginTop: probOffset,
                     backgroundColor: "#fde8d8",
@@ -146,6 +147,9 @@ export function ProblemSolution() {
                   }}
                   transition={{ duration: 0.18, ease: "easeOut" }}
                 >
+                  <span className="absolute -top-2.5 -left-2.5 w-7 h-7 rounded-full bg-white border-2 border-red-300 text-red-600 text-xs font-bold flex items-center justify-center shadow-sm">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   <div
                     className="w-14 h-14 rounded-2xl bg-orange-100 flex items-center justify-center shrink-0"
                     style={{ boxShadow: "0 0 16px 2px rgba(234,88,12,0.26)" }}
@@ -153,8 +157,10 @@ export function ProblemSolution() {
                     <ProblemIcon className="h-7 w-7 text-orange-500" strokeWidth={2} />
                   </div>
                   <div>
-                    <p className="font-semibold text-stone-800 text-sm mb-0.5">{pair.problem.title}</p>
-                    <p className="text-xs text-stone-500">{pair.problem.description}</p>
+                    <p className="font-semibold text-stone-500 text-sm mb-0.5 line-through decoration-red-400 decoration-2">
+                      {pair.problem.title}
+                    </p>
+                    <p className="text-xs text-stone-400">{pair.problem.description}</p>
                   </div>
                 </motion.div>
 
@@ -254,7 +260,7 @@ export function ProblemSolution() {
 
                 {/* Solution card */}
                 <motion.div
-                  className="flex-1 flex items-center gap-4 p-5 rounded-2xl cursor-default"
+                  className="relative flex-1 flex items-center gap-4 p-5 rounded-2xl cursor-default"
                   style={{
                     marginTop: solOffset,
                     backgroundColor: "#f0fdf4",
@@ -270,6 +276,9 @@ export function ProblemSolution() {
                   }}
                   transition={{ duration: 0.18, ease: "easeOut" }}
                 >
+                  <span className="absolute -top-2.5 -right-2.5 flex items-center gap-1 bg-green-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+                    <Check className="h-3 w-3" strokeWidth={3} /> Fixed
+                  </span>
                   <div
                     className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center shrink-0"
                     style={{ boxShadow: "0 0 16px 2px rgba(22,163,74,0.26)" }}
@@ -299,7 +308,7 @@ export function ProblemSolution() {
               key={badge}
               className="flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full border border-gray-100"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+              <Check className="h-3.5 w-3.5 text-green-600 shrink-0" strokeWidth={2.5} />
               <span className="font-medium text-gray-600">{badge}</span>
             </div>
           ))}
