@@ -216,39 +216,9 @@ function ProductCard({ group, delay }: { group: CategoryGroup; delay: number }) 
   );
 }
 
-function CategoryListRow({ group }: { group: CategoryGroup }) {
-  const { shot } = useRotatingShot(group.shots);
-
-  return (
-    <div className="flex items-center gap-4 p-3 hover:bg-gray-50 transition-colors">
-      <div className="relative w-12 h-12 rounded-lg overflow-hidden shrink-0 bg-white border border-gray-100">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={shot.name}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="absolute inset-0"
-          >
-            <Image src={shot.image} alt={shot.alt} fill className="object-cover" sizes="48px" />
-          </motion.div>
-        </AnimatePresence>
-      </div>
-      <div className="flex-1 min-w-0">
-        <p className="font-semibold text-gray-900 text-sm truncate">{group.category}</p>
-        <p className="text-xs text-gray-500">{group.itemCount}</p>
-      </div>
-      <span className={cn("text-xs font-semibold px-2 py-1 rounded-full shrink-0", group.tagColor)}>
-        {group.shots.length} photo{group.shots.length > 1 ? "s" : ""}
-      </span>
-    </div>
-  );
-}
-
 export function ProductShowcase() {
   return (
-    <section className="py-[60px] sm:py-[120px] bg-white">
+    <section className="pt-[60px] sm:pt-[120px] pb-10 sm:pb-16 bg-white">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -263,7 +233,7 @@ export function ProductShowcase() {
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             Real Products, <span className="text-green-600">Real Stock</span>
           </h2>
-          <p className="text-gray-500 text-base sm:text-lg whitespace-nowrap">
+          <p className="text-gray-500 text-base sm:text-lg sm:whitespace-nowrap">
             Just a glimpse of our 10,000+ products across 20+ categories.
           </p>
         </motion.div>
@@ -274,24 +244,12 @@ export function ProductShowcase() {
           ))}
         </div>
 
-        {/* Vertical scrollable list — browse every category without horizontal swiping */}
-        <div className="max-w-2xl mx-auto mt-16">
-          <h3 className="text-center text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
-            Browse All Categories
-          </h3>
-          <div className="max-h-[420px] overflow-y-auto rounded-2xl border border-gray-100 divide-y divide-gray-100 shadow-sm">
-            {categoryGroups.map((group) => (
-              <CategoryListRow key={group.category} group={group} />
-            ))}
-          </div>
-        </div>
-
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-center mt-12"
+          className="text-center mt-10"
         >
           <p className="text-gray-500 text-sm">
             These are just a few of our <strong className="text-gray-700">10,000+ products</strong>, spanning{" "}

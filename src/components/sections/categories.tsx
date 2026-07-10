@@ -1,12 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   Package, SprayCan, Wheat, Coffee,
   Snowflake, CookingPot, Sandwich, Droplets, Milk, Pizza, Plus
 } from "lucide-react";
 import { categories } from "@/data/content";
 import { HighwayAnimation } from "@/components/shared/highway-animation";
+import pittaBreadImg from "@/assets/images/pitta-bread.jpg";
+import kraftCarrierBagImg from "@/assets/images/kraft-carrier-bag.jpg";
+import pepperoniImg from "@/assets/images/pepperoni.jpg";
+import orangeSquashImg from "@/assets/images/orange-squash.jpg";
 
 const iconMap: Record<string, React.ElementType> = {
   snowflake: Snowflake,
@@ -19,6 +24,14 @@ const iconMap: Record<string, React.ElementType> = {
   sparkles: SprayCan,
   milk: Milk,
   pizza: Pizza,
+};
+
+// Real product photos for categories we have them for — the rest stay icon-only
+const categoryPhotos: Record<string, typeof pittaBreadImg> = {
+  "Bakery Products": pittaBreadImg,
+  Packaging: kraftCarrierBagImg,
+  "Pizza Supplies": pepperoniImg,
+  Beverages: orangeSquashImg,
 };
 
 export function Categories() {
@@ -50,6 +63,7 @@ export function Categories() {
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5">
           {categories.map((cat, i) => {
             const Icon = iconMap[cat.icon] ?? Package;
+            const photo = categoryPhotos[cat.name];
             return (
               <motion.div
                 key={cat.id}
@@ -61,9 +75,15 @@ export function Categories() {
                 className={`relative group p-5 rounded-2xl border-2 ${cat.color} bg-white cursor-pointer shadow-sm hover:shadow-xl hover:shadow-green-200/50 transition-all duration-300`}
               >
                 <div className="mb-4">
-                  <div className="inline-flex p-3 rounded-xl bg-white shadow-sm border border-gray-100">
-                    <Icon className="h-6 w-6 text-green-600" />
-                  </div>
+                  {photo ? (
+                    <div className="relative w-12 h-12 rounded-xl overflow-hidden shadow-sm border border-gray-100 bg-white">
+                      <Image src={photo} alt={cat.name} fill className="object-cover" sizes="48px" />
+                    </div>
+                  ) : (
+                    <div className="inline-flex p-3 rounded-xl bg-white shadow-sm border border-gray-100">
+                      <Icon className="h-6 w-6 text-green-600" />
+                    </div>
+                  )}
                 </div>
                 <h3 className="font-semibold text-gray-900 text-sm sm:text-base leading-tight mb-1">
                   {cat.name}

@@ -52,7 +52,7 @@ function StatItem({ value, suffix, label, index }: { value: string; suffix?: str
 
 export function Testimonials() {
   return (
-    <section className="py-[60px] sm:py-[120px] bg-white">
+    <section className="pt-10 sm:pt-16 pb-[60px] sm:pb-[120px] bg-white">
       <div className="container mx-auto px-4">
 
         {/* Stat strip */}
