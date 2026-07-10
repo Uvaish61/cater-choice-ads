@@ -13,6 +13,23 @@ import thermalRollImg from "@/assets/images/thermal-roll.jpg";
 import elephantAttaImg from "@/assets/images/elephant-atta.jpg";
 import tunaChunksImg from "@/assets/images/tuna-chunks.jpg";
 import duplicateBookImg from "@/assets/images/duplicate-book.jpg";
+import piriPiriMarinadeImg from "@/assets/images/piri-piri-marinade.jpg";
+import singleCreamImg from "@/assets/images/single-cream.jpg";
+import biscoffCheesecakeImg from "@/assets/images/biscoff-cheesecake.jpg";
+import ferreroCheesecakeImg from "@/assets/images/ferrero-cheesecake.jpg";
+import tunaOilImg from "@/assets/images/tuna-oil.jpg";
+import fishFilletImg from "@/assets/images/fish-fillet.jpg";
+import lycheesImg from "@/assets/images/lychees.jpg";
+import pineappleRingsImg from "@/assets/images/pineapple-rings.jpg";
+import gardenPeasTinImg from "@/assets/images/garden-peas-tin.jpg";
+import plasticForksImg from "@/assets/images/plastic-forks.jpg";
+import karakChaiImg from "@/assets/images/karak-chai.jpg";
+import sevenUpImg from "@/assets/images/7up.jpg";
+import aquaWaterImg from "@/assets/images/aqua-water.jpg";
+import freshMilkImg from "@/assets/images/fresh-milk.jpg";
+import greenPeasImg from "@/assets/images/green-peas.jpg";
+import fairyDishwashImg from "@/assets/images/fairy-dishwash.jpg";
+import eaziKleanImg from "@/assets/images/eazi-klean.jpg";
 
 interface ProductShot {
   name: string;
@@ -20,13 +37,15 @@ interface ProductShot {
   alt: string;
 }
 
-// Grouped by category — a category with more than one photo auto-rotates within a single card
-const categoryGroups: {
+interface CategoryGroup {
   category: string;
   tagColor: string;
   itemCount: string;
   shots: ProductShot[];
-}[] = [
+}
+
+// Grouped by category — a category with more than one photo auto-rotates within a single card
+const categoryGroups: CategoryGroup[] = [
   {
     category: "Bakery Products",
     tagColor: "bg-amber-100 text-amber-700",
@@ -42,6 +61,9 @@ const categoryGroups: {
     itemCount: "600+ beverage lines",
     shots: [
       { name: "Orange Squash, Double Strength", image: orangeSquashImg, alt: "Bottle of double strength orange squash" },
+      { name: "Karak Chai, Food Service Pack", image: karakChaiImg, alt: "1kg bag of sweetened karak chai premix" },
+      { name: "7up", image: sevenUpImg, alt: "Bottle of 7up" },
+      { name: "Aqua Carpatica Mineral Water", image: aquaWaterImg, alt: "Bottle of Aqua Carpatica natural mineral water" },
     ],
   },
   {
@@ -67,6 +89,10 @@ const categoryGroups: {
     itemCount: "Ambient & tinned range",
     shots: [
       { name: "Tuna Chunks in Brine", image: tunaChunksImg, alt: "Catering tin of tuna chunks in brine" },
+      { name: "Tuna Chunks in Oil", image: tunaOilImg, alt: "Catering tin of tuna chunks in oil" },
+      { name: "Lychees in Syrup", image: lycheesImg, alt: "Tin of lychees in syrup" },
+      { name: "Pineapple Rings in Syrup", image: pineappleRingsImg, alt: "Tin of pineapple rings in light syrup" },
+      { name: "Garden Peas in Water", image: gardenPeasTinImg, alt: "Tin of garden peas in water" },
     ],
   },
   {
@@ -75,22 +101,71 @@ const categoryGroups: {
     itemCount: "Till & stationery supplies",
     shots: [
       { name: "Duplicate Order Books", image: duplicateBookImg, alt: "Preema duplicate order book, pack of 5" },
+      { name: "Luxury Plastic Forks, 100pk", image: plasticForksImg, alt: "Pack of 100 luxury plastic forks" },
+    ],
+  },
+  {
+    category: "Sauces & Condiments",
+    tagColor: "bg-orange-100 text-orange-700",
+    itemCount: "400+ sauce lines",
+    shots: [
+      { name: "Piri-Piri Marinade, Extra Hot", image: piriPiriMarinadeImg, alt: "2kg tub of extra hot piri-piri marinade" },
+    ],
+  },
+  {
+    category: "Dairy & Cheese",
+    tagColor: "bg-yellow-100 text-yellow-700",
+    itemCount: "300+ dairy lines",
+    shots: [
+      { name: "Kerrymaid Single Cream", image: singleCreamImg, alt: "Carton of Kerrymaid smooth and creamy single cream" },
+      { name: "Fresh Whole Milk, 2L", image: freshMilkImg, alt: "2 litre bottle of fresh whole milk" },
+    ],
+  },
+  {
+    category: "Desserts",
+    tagColor: "bg-pink-100 text-pink-700",
+    itemCount: "Dessert & bakery range",
+    shots: [
+      { name: "Biscoff Cheesecake", image: biscoffCheesecakeImg, alt: "Slice of biscoff cheesecake" },
+      { name: "Ferrero Cheesecake", image: ferreroCheesecakeImg, alt: "Whole Ferrero Rocher cheesecake" },
+    ],
+  },
+  {
+    category: "Cleaning & Hygiene",
+    tagColor: "bg-emerald-100 text-emerald-700",
+    itemCount: "1,200+ cleaning lines",
+    shots: [
+      { name: "Fairy Professional Dishwash, 5L", image: fairyDishwashImg, alt: "5 litre bottle of Fairy Professional washing up liquid" },
+      { name: "Eazi Klean Machine Dishwash, 5L", image: eaziKleanImg, alt: "5 litre container of Eazi Klean machine dishwash" },
+    ],
+  },
+  {
+    category: "Frozen Foods",
+    tagColor: "bg-blue-100 text-blue-700",
+    itemCount: "Fresh & frozen range",
+    shots: [
+      { name: "White Fish Fillet", image: fishFilletImg, alt: "Raw white fish fillet" },
+      { name: "Garden Peas", image: greenPeasImg, alt: "Bowl of garden peas" },
     ],
   },
 ];
 
-function ProductCard({ group, delay }: { group: (typeof categoryGroups)[number]; delay: number }) {
+function useRotatingShot(shots: ProductShot[]) {
   const [active, setActive] = useState(0);
 
   useEffect(() => {
-    if (group.shots.length < 2) return;
+    if (shots.length < 2) return;
     const timer = setInterval(() => {
-      setActive((a) => (a + 1) % group.shots.length);
+      setActive((a) => (a + 1) % shots.length);
     }, 2800);
     return () => clearInterval(timer);
-  }, [group.shots.length]);
+  }, [shots.length]);
 
-  const shot = group.shots[active];
+  return { shot: shots[active], active };
+}
+
+function ProductCard({ group, delay }: { group: CategoryGroup; delay: number }) {
+  const { shot, active } = useRotatingShot(group.shots);
 
   return (
     <motion.div
@@ -110,13 +185,7 @@ function ProductCard({ group, delay }: { group: (typeof categoryGroups)[number];
             transition={{ duration: 0.4 }}
             className="absolute inset-0"
           >
-            <Image
-              src={shot.image}
-              alt={shot.alt}
-              fill
-              className="object-cover"
-              sizes="260px"
-            />
+            <Image src={shot.image} alt={shot.alt} fill className="object-cover" sizes="260px" />
           </motion.div>
         </AnimatePresence>
 
@@ -147,6 +216,36 @@ function ProductCard({ group, delay }: { group: (typeof categoryGroups)[number];
   );
 }
 
+function CategoryListRow({ group }: { group: CategoryGroup }) {
+  const { shot } = useRotatingShot(group.shots);
+
+  return (
+    <div className="flex items-center gap-4 p-3 hover:bg-gray-50 transition-colors">
+      <div className="relative w-12 h-12 rounded-lg overflow-hidden shrink-0 bg-white border border-gray-100">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={shot.name}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="absolute inset-0"
+          >
+            <Image src={shot.image} alt={shot.alt} fill className="object-cover" sizes="48px" />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+      <div className="flex-1 min-w-0">
+        <p className="font-semibold text-gray-900 text-sm truncate">{group.category}</p>
+        <p className="text-xs text-gray-500">{group.itemCount}</p>
+      </div>
+      <span className={cn("text-xs font-semibold px-2 py-1 rounded-full shrink-0", group.tagColor)}>
+        {group.shots.length} photo{group.shots.length > 1 ? "s" : ""}
+      </span>
+    </div>
+  );
+}
+
 export function ProductShowcase() {
   return (
     <section className="py-[60px] sm:py-[120px] bg-white">
@@ -173,6 +272,18 @@ export function ProductShowcase() {
           {categoryGroups.map((group, i) => (
             <ProductCard key={group.category} group={group} delay={i * 0.1} />
           ))}
+        </div>
+
+        {/* Vertical scrollable list — browse every category without horizontal swiping */}
+        <div className="max-w-2xl mx-auto mt-16">
+          <h3 className="text-center text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+            Browse All Categories
+          </h3>
+          <div className="max-h-[420px] overflow-y-auto rounded-2xl border border-gray-100 divide-y divide-gray-100 shadow-sm">
+            {categoryGroups.map((group) => (
+              <CategoryListRow key={group.category} group={group} />
+            ))}
+          </div>
         </div>
 
         <motion.div
